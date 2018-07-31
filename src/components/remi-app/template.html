@@ -1,0 +1,73 @@
+
+<!-- Header -->
+
+<app-header condenses reveals effects="waterfall">
+  <paper-progress indeterminate hidden$="[[!loading]]"></paper-progress>
+  <app-toolbar class="toolbar-top" sticky>
+    <paper-icon-button 
+      id="menu-btn"
+      icon="bn-icons:menu" 
+      hidden$="[[!_userIsAdmin(_user)]]"
+      on-click="_openDrawer"></paper-icon-button>
+    <a href="/">
+      <paper-icon-button icon="bn-icons:arrow-back" id="back-btn"></paper-icon-button>
+    </a>
+    
+    <div main-title>
+      <a href="/">ReminiscebyRo</a>
+    </div>
+    
+    <a href="/cart" cart-btn>
+      <paper-icon-button icon="bn-icons:cart"></paper-icon-button>
+      <span class="cart-badge">[[cartItemsCount]]</span>
+    </a>
+    
+  </app-toolbar>
+  <!-- This gets hidden on a small screen-->
+  <nav class="toolbar-list">
+    <a selected$="[[is_selected(page, 'home')]]" href="/">Home</a>
+    <a selected$="[[is_selected(page, 'shop')]]" href="/shop">Shop</a>
+    <a selected$="[[is_selected(page, 'about')]]" href="/about">Our Story</a>
+    <a selected$="[[is_selected(page, 'contact')]]" href="/contact">Get in touch</a>
+  </nav>
+  <!-- <category-nav hidden$="[[!is_selected(page, 'shop')]]"></category-nav> -->
+  
+</app-header>
+<!-- Drawer content -->
+
+<template is="dom-if" if="[[_userIsAdmin(_user)]]">
+  <app-drawer opened="{{_drawerOpened}}">
+    <nav class="drawer-list">
+      <a selected$="[[is_selected(_page, 'view2')]]" href="/dashboard">Dashboard</a>
+      <a selected$="[[is_selected(_page, 'view3')]]" href="/shop">Shop</a>
+      <a selected$="[[is_selected(_page, 'view3')]]" href="/orders">Orders</a>
+      <a selected$="[[is_selected(_page, 'view3')]]" href="/blogging">Blog</a>
+    </nav>
+  </app-drawer>
+</template>
+
+<!-- Main content -->
+<main class="main-content" id="pages">
+  <remi-home page="home"></remi-home>
+  <remi-product page="product"></remi-product>
+  <remi-about page="about"></remi-about>
+  <remi-contact page="contact"></remi-contact>
+  <remi-shop page="shop"></remi-shop>
+  <remi-cart page="cart"></remi-cart>
+  <remi-login page="login"></remi-login>
+  <remi-dashboard page="dashboard"></remi-dashboard>
+  <remi-products page="products"></remi-products>
+  <remi-product-editor page="product-edit"></remi-product-editor>
+  <remi-orders page="orders"></remi-orders>
+</main>
+
+<!--
+    shop-cart-data maintains the state of the user's shopping cart (in localstorage) and
+    calculates the total amount.
+  -->
+
+<remi-cart-data></remi-cart-data>
+<remi-cart-modal id="cart-modal"></remi-cart-modal>
+
+<snack-bar active$="[[toastVisible]]">
+  You are now ${_offline ? 'offline' : 'online'}.</snack-bar>

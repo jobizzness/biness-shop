@@ -1,0 +1,54 @@
+
+
+<section class="content">
+    <remi-order-details data="[[activeItem]]" opened="[[activeItem]]" dialog></remi-order-details>
+    <div>
+        <vaadin-grid 
+            aria-label="Basic Binding Example" 
+            items="[[orders]]" 
+            column-reordering-allowed 
+            multi-sort
+            active-item="{{activeItem}}"
+            theme="wrap-cell-content">
+
+            <vaadin-grid-column width="100px" flex-grow="0">
+                <template class="header">Order #</template>
+                <template>
+                    <span class="order-number">[[item.number]]</span>
+                </template>
+            </vaadin-grid-column>
+        
+            <vaadin-grid-column>
+                <template class="header">Date</template>
+                <template>[[item.date]]</template>
+            </vaadin-grid-column>
+        
+            <vaadin-grid-column>
+                <template class="header">Customer</template>
+                <template>[[item.customer.firstName]] [[item.customer.lastName]] </template>
+            </vaadin-grid-column>
+        
+            <vaadin-grid-column width="8em">
+                <template class="header">Payment Status</template>
+                <template>
+                    <div style="white-space: normal" class="badge">[[item.payment.status]]</div>
+                </template>
+            </vaadin-grid-column>
+            
+            <vaadin-grid-column width="8em">
+                <template class="header">Fulfilment Status</template>
+                <template>
+                    <div style="white-space: normal" class="badge">[[item.fulfilment.status]]</div>
+                </template>
+            </vaadin-grid-column>
+
+            <vaadin-grid-column width="8em">
+                <template class="header">Total</template>
+                <template>
+                    <div style="white-space: normal">$[[item.total]]</div>
+                </template>
+            </vaadin-grid-column>
+
+        </vaadin-grid>
+    </div>
+</section>

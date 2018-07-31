@@ -1,0 +1,15 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+coverage
+dist
+config.js
+node_modules
+.vscode/
+.idea/
+.DS_Store
+src/vendor/webcomponents-loader.js
+*.report.html
+# To be sure...
+bower_components

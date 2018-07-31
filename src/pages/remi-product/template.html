@@ -1,0 +1,61 @@
+
+<section class="page-wrapper">
+    <template is="dom-if" if="[[_userIsAdmin(user)]]">
+        <header class="layout content horizontal center toolbar">
+            <span class="flex"></span>
+            <a href="/product-edit/[[data.slug]]" on-click="_edit">
+                <button class="mdc-button accent-btn">
+                    Edit
+                </button>
+            </a>
+        </header>
+    </template>
+    <div class="content layout horizontal main-section" hidden="[[!data]]">
+        <div class="product-media">
+            <iron-image 
+                sizing="cover"
+                preload 
+                fade 
+                src="[[data.image]]"></iron-image>
+        </div>
+        <div class="detail layout vertical flex">
+            <h1 class="mdc-typography--headline4">[[data.name]]</h1>
+            <div class="price mdc-typography--headline6">$[[data.price]]</div>
+            <div class="pickers">
+                <!-- Color -->
+                <div class="colors-wrapper">
+                    <h2 class="mdc-typography--body2 color-names">Colour: <span>Indigo</span>, <span>Pink</span></h2>
+                    <remi-color-swatch-input></remi-color-swatch-input>
+                </div>
+                <div class="layout horizontal center">
+                    <quantity-input min="1" max="7" value="{{quantity}}"></quantity-input>
+                    <div class="flex">
+                        <button class="mdc-button mdc-button--unelevated btn-add-cart" on-click="_addToCart">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="description">
+                <h2 class="mdc-typography--headline5">Description</h2>
+                <p class="mdc-typography--body2">[[data.description]]
+                    <div>
+                        <br>
+                    </div>
+                    <div class="mdc-typography--headline5">Features:</div>
+                    <div>
+                        <ul>
+                            <template is="dom-repeat" items="[[_getFeatures(data.features)]]">
+                                <li>[[item]]</li>
+                            </template>
+                        </ul>
+                    </div>
+                </p>
+            </div>
+            <!-- <shop-button responsive="">
+                <button aria-label="Add this item to cart">Add to Cart</button>
+            </shop-button> -->
+        </div>
+    </div>
+</section>

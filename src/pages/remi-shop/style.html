@@ -1,0 +1,27 @@
+<style>
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 24px;
+    }
+
+    .feature-item {
+        grid-column-end: span 2;
+    }
+
+    .toolbar {
+        padding: 16px 0;
+    }
+
+    @media only screen and (max-device-width: 480px) and (min-device-width: 320px) {
+        .feature-item {
+            grid-column-end: span 6;
+        }
+    }
+
+    @media only screen and (max-device-width: 768px) and (min-device-width: 480px) {
+        .feature-item {
+            grid-column-end: span 3;
+        }
+    }
+</style>

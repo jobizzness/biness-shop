@@ -1,0 +1,29 @@
+
+<section>
+
+</section>
+<section class="app-section feature pad" style="margin-bottom: 4em;">
+    <div class="content">
+        <div class="center heading-wrapper">
+            <h1 class="mdc-typography--headline5">Shop</h1>
+        </div>
+        <template is="dom-if" if="[[_userIsAdmin(user)]]">
+            <header class="layout horizontal center toolbar">
+                <span class="flex"></span>
+                <a href="/product-edit/create" on-click="_create">
+                    <button class="mdc-button accent-btn">
+                        Add Product
+                    </button>
+                </a>
+                
+            </header>
+        </template>
+        <div class="feature-grid">
+            <template is="dom-repeat" items="[[products]]" as="product">
+                <a href$="/product/[[product.slug]]" class="feature-item" on-click="_view" data="[[product]]">
+                    <remi-product-item featured forAdmin$="[[_userIsAdmin(user)]]" data="[[product]]"></remi-product-item>
+                </a>
+            </template>
+        </div>
+    </div>
+</section>

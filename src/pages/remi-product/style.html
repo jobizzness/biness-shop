@@ -1,0 +1,66 @@
+<style>
+    remi-product{
+        visibility: visible !important;
+    }
+
+    remi-product .product-media {
+        position: relative;
+        margin: 64px 32px;
+        width: 600px;
+        height: 500px;
+    }
+
+    remi-product .product-media>iron-image {
+        width: 100%;
+        height: 100%;
+        background-color: #eee;
+    }
+
+    remi-product .price {
+        font-weight: 600;
+    }
+
+    remi-product quantity-input {
+        margin-right: 16px;
+    }
+
+    remi-product button.btn-add-cart {
+        --mdc-theme-primary: var(--app-secondary-color);
+        width: 220px;
+        height: 48px;
+        border-radius: 24px;
+    }
+
+    remi-product .detail {
+        margin: 64px 16px;
+    }
+
+    remi-product .color-names {
+        color: #000000c7;
+    }
+
+    remi-product .color-names>span {
+        font-weight: 500;
+    }
+
+    @media only screen and (max-device-width: 480px) and (min-device-width: 320px) {
+        remi-product quantity-input {
+            max-width: 150px;
+        }
+    }
+
+    @media only screen and (max-device-width: 768px) and (min-device-width: 320px) {
+        remi-product .main-section {
+            flex-direction: column !important;
+        }
+        remi-product .product-media {
+            width: 100%;
+            height: 300px;
+            margin: 0;
+        }
+        remi-product .detail {
+            margin-top: 16px;
+            display: block !important;
+        }
+    }
+</style>
