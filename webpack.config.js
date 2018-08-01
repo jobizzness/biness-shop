@@ -34,12 +34,7 @@ const copyStatics = {
     from: resolve('./node_modules/web-animations-js'),
     to: join(OUTPUT_PATH, 'vendor/web-animations-js'),
     flatten: false
-  },
-  {
-      from: resolve('./src/components/remi-app/remi-app.css'),
-      to: join(OUTPUT_PATH, 'assets/style/app.css'),
-      flatten: true
-    }
+  }
  ],
   copyOthers: [{
     from: 'assets/**',
@@ -95,8 +90,8 @@ const shared = env => {
           use: { loader: 'text-loader' }
         },
         {
-          test: /\.pcss$/,
-          use: ['text-loader', 'postcss-loader']
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader']
         }
       ]
     },

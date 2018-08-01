@@ -22,14 +22,12 @@ import { getProductListing, setActiveProduct } from "../../actions/shop.js";
 import { InjectGlobalStyle} from '../../core/utils.js';
 
 import { shop } from "../../reducers/shop.js";
-import './style.html';
+import './style.css';
 
 store.addReducers({
     shop
 });
 
-//Imports lazy global styles
-InjectGlobalStyle({ name: 'remi-home' }, () => import('./style.html'));
 InjectGlobalStyle({name: 'material-button'}, () => import('../../components/material/button.html'));
 
 /**

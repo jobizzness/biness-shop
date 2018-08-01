@@ -20,7 +20,6 @@ class RemiProductItem extends LitElement {
         <style>
             :host{
                 display: block;
-                background: #eee;
                 height: 375px;
                 position: relative;
                 overflow: hidden;
@@ -34,7 +33,7 @@ class RemiProductItem extends LitElement {
             }
             .product-media{
                 width: 100%;
-                height: calc(100% - 87px);
+                height: calc(100% - 105px);
             }
             .wrapper, iron-image{
                 width: 100%;
@@ -45,7 +44,6 @@ class RemiProductItem extends LitElement {
                 bottom: 0px;
                 width:100%;
                 height: 105px;
-                background: white;
             }
             .title{
                 font-size: 1rem;
@@ -103,7 +101,7 @@ class RemiProductItem extends LitElement {
                             <div class="flexed">
                                 <span class="price-tag">$60.00</span>
                                 <span style="flex:1"></span>
-                                <button class="mdc-button mdc-button--dense mdc-button--raised"> 
+                                <button class="mdc-button mdc-button--dense mdc-button--outlined"> 
                                     Add to Cart</button>
                             </div>` 
                         : 

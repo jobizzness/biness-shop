@@ -3,4 +3,5 @@
 /* Import WebpackApp */
 
 /* eslint-disable no-unused-vars */
-import './components/remi-app';
+import './components/biness-shop';
+import './assets/biness-shop.css';

@@ -1,121 +1,15 @@
 
 <div class="page-wrapper">
-    <section class="app-hero pad">
-        <div class="content layout horizontal center-center app-hero-content">
-            <div class="hero-content pad flex">
-                <h1 class="mdc-typography--headline2">
-                    <biness-text 
-                        can-edit$="[[editMode]]"
-                        value="Adu Matte Liquid Lipstick"></biness-text>
-                </h1>
-                <p class="mdc-typography--body2">
-                    <biness-text 
-                        value="Senses is the smart sleep tracker that improves your sleep, wakes you up feeling great, and shoes how the envirnment of your
-                        room affects your rest."
-                        can-edit$="[[editMode]]"></biness-text>
-                </p>
-                <div class="call-action-wrapper center">
-                    <a href="/shop">
-                        <button class="mdc-button mdc-button--outlined">
-                            <biness-text 
-                                can-edit$="[[editMode]]" 
-                                value="Shop Now">
-                            </biness-text>
-                            
-                        </button>
-                    </a>
-                </div>
-            </div>
-            <div class="hero-media hidden-on-small pad flex">
-                <div class="some-component"></div>
-            </div>
-        </div>
-    </section>
-    <div class="hero-bottom-wave">
-        <svg class="white-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2185.67598 163.5116" preserveAspectRatio="none">
-            <g fill="#FFF">
-                <path id="wave-hero-a" d="M0.00014879508281249998,169.299133541075 C0,121.45670655968749 0,73.61032456187499 0,25.77386223625 510.57,74.124400495 866.45,56.7873953784375 1102.43,29.9850213009375 1165.08,22.871175317812497 1217.35,15.314639165625 1305.37,8.8993063053125 1663.92,-17.2141530103125 1974.87,22.398967115625002 2185.67,61.323413463125 2185.67,97.31330516125 2185.67,133.303196859375 2185.67,169.2931688853125 1457.11,169.2931688853125 728.55,169.2931688853125 0,169.2931688853125 z"
-                    data-original="M0,36.13176c510.57341-49.1484,866.45316-31.52357,1102.43632-4.28682,62.644,7.23026,114.91521,14.91582,202.936,21.4341C1663.92411,79.83119,1974.87411,39.56043,2185.676,0V163.5116H0Z"
-                    data-svg-origin="0 0" style="transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);"></path>
-                <path id="wave-hero-b" class="filler" d="M.00015,169.346,0,25.69084c510.57343,49.14831,866.45322,31.52344,1102.43639,4.28665,62.644-7.23023,114.91523-14.91579,202.936-21.43411,358.55178-26.55218,669.50178,13.71854,880.30381,53.27894l.00014,107.5234Z"></path>
-            </g>
-        </svg>
-    </div>
-    <section class="app-section content layout horizontal center highlight-product pad">
-        <div class="media">
-            <iron-image 
-                sizing="cover"
-                preload 
-                src="/assets/images/banner.jpeg"></iron-image>
-        </div>
-        <span class="flex"></span>
-        <div class="pad">
-            <h1 class="mdc-typography--headline3">
-                <biness-text 
-                        can-edit$="[[editMode]]"
-                        value="Beauty in real Life"></biness-text>
-                </h1>
-            <p class="mdc-typography--body2">
-                <biness-text 
-                        can-edit$="[[editMode]]"
-                        value="Create colorful dimension from cheeks to eyes to temples."></biness-text>
-            </p>
-            <a href="/shop">
-                <button class="mdc-button mdc-button--outlined" style="margin: 2em 0">
-                    <biness-text can-edit$="[[editMode]]" value="Shop Now"></biness-text>
-                </button>
-            </a>
-        </div>
-    </section>
-     <section class="app-section feature" style="padding-bottom: 4em;">
-        <div class="content">
-            <div class="center heading-wrapper pad">
-                <h1 class="mdc-typography--headline5">Featured</h1>
-            </div>
-            <div class="feature-grid">
-                <template is="dom-repeat" items="[[bestSellers]]" as="product">
-                    <a href$="/product/[[product.slug]]" 
-                        class="feature-item" 
-                        on-click="_view">
-                        <remi-product-item featured forAdmin$="[[_userIsAdmin(user)]]" data="[[product]]"></remi-product-item>
-                    </a>
-                </template>
-            </div>
-        </div>
-    </section>
-    <section class="app-section feature" style="padding-bottom: 4em;">
-        <div class="content">
-            <div class="center heading-wrapper pad">
-                <h1 class="mdc-typography--headline5">Latest</h1>
-            </div>
-            <div class="feature-grid">
-                <template is="dom-repeat" items="[[bestSellers]]" as="product">
-                    <a href$="/product/[[product.slug]]" class="feature-item" on-click="_view">
-                        <remi-product-item featured forAdmin$="[[_userIsAdmin(user)]]" data="[[product]]"></remi-product-item>
-                    </a>
-                </template>
-            </div>
-        </div>
-    </section>
+    <div class="content home-wrapper">
+        <header class="pad">
 
-    <section class="app-section" style="height: 70vh; position: relative;">
-        <iron-image 
-            style="width:100%; height:100%; background-color: lightgray;"
-            sizing="cover"
-            preload 
-            fade 
-            src="/assets/images/pexels-photo-457704.jpeg"></iron-image>
-        <div class="layout vertical center-center bottom-banner-info fit">
-            <div class="title mdc-typography--headline5">
-                <small style="font-size:18px">NEW!</small>
-                <br>Matte Liquid Lipstick
-            </div>
-            <div class="mdc-typography--body" style="padding: 0 24px;text-align: center;">Stunning Metalic Look that Touch Glow Skin Tone you love.</div>
-            <a href="/shop">
-                <button class="mdc-button mdc-button--outlined white-btn">
-                    Shop Now
-                </button>
-            </a>
+        </header>
+        <div class="home-products ">
+            <template is="dom-repeat" items="[[bestSellers]]" as="product">
+                <a href$="/product/[[product.slug]]" on-click="_view">
+                    <remi-product-item featured forAdmin$="[[_userIsAdmin(user)]]" data="[[product]]"></remi-product-item>
+                </a>
+            </template>
         </div>
-    </section>
+    </div>
 </div>
