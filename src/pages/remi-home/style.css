@@ -1,21 +1,18 @@
 
 remi-home{
     visibility: visible !important;
+
+    remi-product-item{
+        height: 550px;
+    }
+
+    .home-products{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 16px;
+    }
 }
 
-remi-home .home-products-wrapper{
-
-}
-
-remi-home remi-product-item{
-    height: 550px;
-}
-
-remi-home .home-products{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 16px;
-}
 @media only screen and (max-device-width: 768px) {
 
 

@@ -4,4 +4,3 @@
 
 /* eslint-disable no-unused-vars */
 import './components/biness-shop';
-import './assets/biness-shop.css';

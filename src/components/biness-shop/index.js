@@ -16,6 +16,7 @@ import { updateMetadata } from 'pwa-helpers/metadata.js';
 
 import { store } from '../../store.js';
 import { navigate, listenUserChange } from '../../actions/app.js';
+import './style.css';
 import template from './template.html';
 import { lightComponent } from '../lightComponent.js';
 
