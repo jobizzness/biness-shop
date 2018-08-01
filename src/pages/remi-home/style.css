@@ -11,6 +11,22 @@ remi-home{
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 16px;
     }
+    .tabs{
+        padding: 16px;
+
+        .tab-link{
+            padding: 16px;
+            font-weight: 600;
+            color: #0e0e0e94;
+            border-bottom: 1px solid #d2d2d2;
+
+            &:hover, &[selected]{
+                border-color: black;
+                color: black;
+            }
+        }
+    }
+    
 }
 
 @media only screen and (max-device-width: 768px) {
