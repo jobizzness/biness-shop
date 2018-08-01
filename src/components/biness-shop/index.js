@@ -8,7 +8,7 @@ import '@polymer/app-layout/app-header/app-header.js';
 import '@polymer/app-layout/app-scroll-effects/effects/waterfall.js';
 import '@polymer/app-layout/app-toolbar/app-toolbar.js';
 import { setPassiveTouchGestures } from '@polymer/polymer/lib/utils/settings.js';
-import '@polymer/paper-progress/paper-progress.js';
+// import '@polymer/paper-progress/paper-progress.js';
 
 import { connect } from 'pwa-helpers/connect-mixin.js';
 import { installRouter } from 'pwa-helpers/router.js';
@@ -24,11 +24,9 @@ window.customElements.define('remi-app', class extends connect(store)(lightCompo
 
   static get template() {
 
-    return html`
-        ${html([
+    return html([
           template
-        ])}
-      `;
+       ])
   }
 
 static get properties() {

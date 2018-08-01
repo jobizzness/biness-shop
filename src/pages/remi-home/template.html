@@ -3,15 +3,15 @@
     <div class="content home-wrapper">
         <header class="pad">
             <!-- Tabs to filter based on category -->
-            <div class="tabs">
-                <a href="/category/men" class="tab-link" selected><span>Shoes</span></a>
-                <a href="/category/men" class="tab-link"><span>Clothes</span></a>
-                <a href="/category/men" class="tab-link"><span>Jeans</span></a>
-                <a href="/category/men" class="tab-link"><span>Jackets</span></a>
-                <a href="/category/men" class="tab-link"><span>Shirts</span></a>
-                <a href="/category/men" class="tab-link"><span>Pants</span></a>
+            <div class="tabs horizontal-scroll">
+                <a href="/category/shoes" class="tab-link" selected><span>Shoes</span></a>
+                <a href="/category/clothes" class="tab-link"><span>Clothes</span></a>
+                <a href="/category/jeans" class="tab-link"><span>Jeans</span></a>
+                <a href="/category/jackets" class="tab-link"><span>Jackets</span></a>
+                <a href="/category/shirts" class="tab-link"><span>Shirts</span></a>
+                <a href="/category/pants" class="tab-link"><span>Pants</span></a>
             </div>
-            
+            <span class="flex"></span>
         </header>
         <div class="home-products ">
             <template is="dom-repeat" items="[[bestSellers]]" as="product">

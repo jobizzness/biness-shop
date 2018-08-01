@@ -72,22 +72,23 @@ remi-app {
     }
 
     .toolbar-list {
+        display: none;
         padding-bottom: 16px;
-    }
 
-    .toolbar-list>a {
-        display: inline-block;
-        color: var(--app-light-text-color);
-        text-decoration: none;
-        line-height: 30px;
-        padding: 2px 18px;
-        font-size: 1rem;
-    }
+        a{
+            display: inline-block;
+            color: var(--app-light-text-color);
+            text-decoration: none;
+            line-height: 30px;
+            padding: 2px 18px;
+            font-size: 1rem;
 
-    .toolbar-list>a[selected] {
-        color: #fdfefe;
-        background: var(--app-secondary-color);
-        border-radius: 26px;
+            &[selected] {
+                color: #fdfefe;
+                background: var(--app-secondary-color);
+                border-radius: 26px;
+            }
+        }
     }
 
     .menu-btn {
@@ -154,6 +155,11 @@ remi-app {
         width: 100%;
         --paper-progress-active-color: var(--app-secondary-color);
     }
+
+    /* Hide these components until they are loaded */
+    #pages>*{
+        visibility: hidden;
+    }
 }
 
     remi-app[hide-nav] .toolbar-list {
@@ -191,9 +197,10 @@ remi-app {
         }
     }
 }
-    /**
-       ======= Utitlities ========
-    */
+
+/**
+    ======= Utitlities ========
+*/
   .text-center{
     text-align:center;
   }
@@ -203,6 +210,15 @@ remi-app {
   .content{
     max-width: 1200px;
     margin: 0 auto;
+  }
+  .horizontal-scroll{
+    display: block;
+    margin-bottom: -17px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 17px;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
   }
   a{
     text-decoration:none;
@@ -263,10 +279,7 @@ remi-app {
     }
 }
 
-/* Hide these components until they are loaded */
-remi-home, remi-product{
-    visibility: hidden;
-}
+
 
 /* Flex helpers go here */
 remi-app{

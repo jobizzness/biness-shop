@@ -14,15 +14,15 @@ import { connect } from 'pwa-helpers/connect-mixin.js';
 
 import { store } from '../../store.js';
 import "../../components/remi-product-item";
-import buttonStyles from "../../components/material/button.html";
+import "../../components/material/button.html";
 import { PageViewElement } from '../../components/page-view-element.js';
 import { slideUp, slideDown } from '../../components/animation.js';
 import { getProductListing, setActiveProduct, setEditingProduct } from "../../actions/shop.js";
 import { InjectGlobalStyle } from '../../core/utils.js';
+import './style.css';
 
 //Import lazy global style
 InjectGlobalStyle({name: 'material-button'}, () => import('../../components/material/button.html'));
-InjectGlobalStyle({ name: 'remi-shop' }, () => import('./style.html'));
 
 import { shop } from "../../reducers/shop.js";
 

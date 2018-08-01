@@ -11,6 +11,10 @@ remi-home{
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 16px;
     }
+
+    .home-wrapper>header{
+        margin-bottom: 3em;
+    }
     .tabs{
         padding: 16px;
 
@@ -30,6 +34,9 @@ remi-home{
 }
 
 @media only screen and (max-device-width: 768px) {
-
-
+    remi-home{
+        remi-product-item{
+            height: 350px;
+        }
+    }
 }
