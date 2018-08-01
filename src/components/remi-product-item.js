@@ -81,6 +81,38 @@ class RemiProductItem extends LitElement {
                 align-items: center;
                 margin-top: 12px;
             }
+            
+            .icon-button{
+                display: none;
+                border-radius: 50%;
+                outline: 0;
+                border: 0;
+                padding: 8px;
+                outline: none;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                cursor: pointer;
+                z-index: 0;
+                line-height: 1;
+                color: #ff0057;
+                background-color: inherit;
+                width: 40px;
+                height: 40px;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                -webkit-tap-highlight-color: transparent;
+                box-sizing: border-box !important;
+            }
+
+            @media only screen and (max-device-width: 480px) and (min-device-width: 320px) {
+                button.mdc-button{
+                    display: none;
+                }
+                .icon-button{
+                    display: block;
+                }
+            }
         </style>
             
         <div class="wrapper">
@@ -103,6 +135,9 @@ class RemiProductItem extends LitElement {
                                 <span style="flex:1"></span>
                                 <button class="mdc-button mdc-button--dense mdc-button--outlined"> 
                                     Add to Cart</button>
+                                <button class="icon-button">
+                                    <iron-icon icon="bn-icons:add-cart"></iron-icon>
+                                </button>
                             </div>` 
                         : 
                         html`

@@ -15,15 +15,23 @@ remi-shop{
     .toolbar {
         padding: 16px 0;
     }
+
+    .heading-wrapper{
+        margin-bottom: 3em;
+    }
 }
 @media only screen and (max-device-width: 480px) and (min-device-width: 320px) {
-    .feature-item {
-        grid-column-end: span 6;
+    remi-shop{
+        .feature-item {
+            grid-column-end: span 6;
+        }
     }
 }
 
 @media only screen and (max-device-width: 768px) and (min-device-width: 480px) {
-    .feature-item {
-        grid-column-end: span 3;
+    remi-shop{
+        .feature-item {
+            grid-column-end: span 3;
+        }
     }
 }

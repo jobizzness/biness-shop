@@ -255,7 +255,26 @@ remi-app {
     height: 43px;
     border-radius: 4px;
   }
-  
+ .icon-button{
+    border-radius: 50%;
+    outline: 0;
+    border: 0;
+    padding: 8px;
+    outline: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    z-index: 0;
+    line-height: 1;
+    background-color: inherit;
+    width: 40px;
+    height: 40px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box !important;
+ }
   .card-with--shadow{
     background-color:white;
     box-shadow: 0 8px 16px 0 rgba(40,40,90,.09), 0 3px 6px 0 rgba(0,0,0,.065);

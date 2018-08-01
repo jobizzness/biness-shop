@@ -38,5 +38,15 @@ remi-home{
         remi-product-item{
             height: 350px;
         }
+
+        .home-wrapper>header{
+            display: block !important;
+        }
+
+        button.mdc-button{
+            margin-top: 35px;
+        }
     }
+
+    
 }
