@@ -1,6 +1,6 @@
-# Council
+# Biness Shop
 
-Remi shop is an ecommerce app built & maintained by www.jobizzness.com. This project uses PolymerJS and webcomponents.
+Biness shop is an ecommerce app built & maintained by www.jobizzness.com. This project uses PolymerJS and webcomponents & Firebase.
 
 ## Installation
 
@@ -13,8 +13,8 @@ Remi shop is an ecommerce app built & maintained by www.jobizzness.com. This pro
 Begin by cloning this repository to your machine, and installing all NPM dependencies.
 
 ```bash
-git git@github.com:jobizzness/reminiscebyro.git
-cd reminiscebyro && npm install
+git clone git@github.com:jobizzness/biness-shop.git
+cd biness-shop && npm install
 yarn:build
 npm start
 ```
