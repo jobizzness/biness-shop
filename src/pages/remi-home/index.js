@@ -9,19 +9,21 @@
 */
 import { html } from '@polymer/polymer/polymer-element.js';
 import { PageViewElement } from '../../components/page-view-element.js';
-import '@polymer/iron-image';
 import { MDCRipple } from '@material/ripple';
 import { connect } from 'pwa-helpers/connect-mixin.js';
 
-import template from './template.html'
+import '@polymer/iron-image';
+import "../../components/remi-product-item";
 import "../../components/biness-text.js";
+import template from './template.html'
 
 import { store } from '../../store.js';
-import "../../components/remi-product-item";
+
 import { getProductListing, setActiveProduct } from "../../actions/shop.js";
 import { InjectGlobalStyle} from '../../core/utils.js';
 
 import { shop } from "../../reducers/shop.js";
+import { RemiApp} from '../../core/app.js'
 import './style.css';
 
 store.addReducers({
@@ -90,6 +92,10 @@ class RemiHome extends connect(store)(PageViewElement) {
         this.user = state.app.user;
         this.bestSellers = state.shop.products;
         this.editMode = false;
+    }
+
+    _openFilter(e){
+        RemiApp.element.dispatchEvent(new CustomEvent('toggle-filter', {bubbles: false, detail: {}}))
     }
 
     _view(e) {

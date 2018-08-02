@@ -83,6 +83,8 @@ static get properties() {
     // installOfflineWatcher((offline) => store.dispatch(updateOffline(offline)));
     // installMediaQueryWatcher(`(min-width: 460px)`,
     //   (matches) => store.dispatch(updateLayout(matches)));
+
+    this.addEventListener('toggle-filter', (e) => this.$.shopFilter.open());
   }
 
 

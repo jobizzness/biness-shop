@@ -107,6 +107,10 @@ class RemiShop extends connect(store)(PageViewElement) {
         store.dispatch(setEditingProduct({}))
     }
 
+    _openFilter(e) {
+        this.dispatchEvent(new CustomEvent('toggle-filter', { bubbles: true, detail: {} }))
+    }
+
     /**
      * Use for one-time configuration of your component after local DOM is initialized. 
      */
