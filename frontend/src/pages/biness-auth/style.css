@@ -1,0 +1,55 @@
+biness-auth{
+    visibility: visible !important;
+    [page]{
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 0 2rem;
+        height: 100%;
+        position: relative;
+    }
+    [page][selected]{
+        display: flex;
+    }
+    &[loading] main{
+        opacity: .6;
+        pointer-events: none;
+
+    }
+    .wrapper{
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    aside{
+        flex: 1;
+        max-width: 300px;
+        width: 100%;
+        background: linear-gradient(to left, #635978c2, #576486);
+    }
+    main{
+        padding: 16px;
+        position: relative;
+        background-color: white;
+    }
+    form{
+        width: 100%;
+    }
+    .card{
+        width: 100%;
+        max-width: 835px;
+        min-height: 500px;
+        border-radius: 14px;
+        overflow: hidden;
+    }
+    .actions .mdc-button{
+        width: 100%;
+        margin: 1em 0;
+    }
+    .text-small{
+        text-decoration: none;
+        font-size: .9rem;
+        font-weight: 500;
+    }
+}

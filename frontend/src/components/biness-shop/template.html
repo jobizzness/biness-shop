@@ -4,11 +4,14 @@
 <app-header condenses reveals effects="waterfall">
   <paper-progress indeterminate hidden$="[[!loading]]"></paper-progress>
   <app-toolbar class="toolbar-top" sticky>
-    <paper-icon-button 
+    <button class="icon-button"
       id="menu-btn"
       icon="bn-icons:menu" 
       hidden$="[[!_userIsAdmin(_user)]]"
-      on-click="_openDrawer"></paper-icon-button>
+      on-click="_openDrawer">
+      <iron-icon icon="bn-icons:menu"></iron-icon>
+    </button>
+
     <a href="/">
       <paper-icon-button icon="bn-icons:arrow-back" id="back-btn"></paper-icon-button>
     </a>
@@ -56,7 +59,7 @@
   <remi-contact page="contact"></remi-contact>
   <remi-shop page="shop"></remi-shop>
   <remi-cart page="cart"></remi-cart>
-  <remi-login page="login"></remi-login>
+  <biness-auth page="auth"></biness-auth>
   <remi-dashboard page="dashboard"></remi-dashboard>
   <remi-products page="products"></remi-products>
   <remi-product-editor page="product-edit"></remi-product-editor>

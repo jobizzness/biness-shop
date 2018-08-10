@@ -15,7 +15,16 @@ class CreateUserCommand extends Command{
 
         const user = await User.create({
             email: this.data.email,
-            password: this.data.password
+            password: this.data.password,
+            avatar: '',
+            birthday: null,
+            purchases: null,
+            addresses: [],
+            cart: {},
+            roles: {
+                admin: false,
+                customer: true
+            }
         })
         
         return user

@@ -105,7 +105,7 @@ biness-shop {
         width: 100%;
         height: 100%;
         padding: 24px;
-        background: var(--app-drawer-background-color);
+        background: white;
         position: relative;
     }
 
@@ -126,11 +126,11 @@ biness-shop {
         min-height: 100vh;
     }
 
-    #pages [page] {
+    #pages>[page] {
         display: none;
     }
 
-    #pages [page][active] {
+    #pages>[page][active] {
         display: block;
     }
 

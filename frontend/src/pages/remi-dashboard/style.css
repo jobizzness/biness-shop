@@ -1,20 +1,17 @@
-<style>
-    remi-dashboard {
-        min-height: 100vh;
-        background: var(--app-primary-color);
-        background: linear-gradient(to right, #393433, #423c3b);
-        color: white;
-    }
 
-    remi-dashboard h1 {
+remi-dashboard {
+    visibility: visible !important;
+    min-height: 100vh;
+
+    h1 {
         margin: 0;
     }
 
-    remi-dashboard header {
+    header {
         padding: 3em 0;
     }
 
-    remi-dashboard .summary-item {
+    .summary-item {
         margin: 0 16px;
         height: 165px;
         padding: 15px;
@@ -24,62 +21,64 @@
         box-shadow: 0px 4px 25px #b3b3b39c;
     }
 
-    remi-dashboard .summary-item.first {
+    .summary-item.first {
         background: linear-gradient(to right, #24baea, #3fc1ff, #20c7ec);
     }
 
-    remi-dashboard .summary-item.second {
+    .summary-item.second {
         background: linear-gradient(to right, #e3c5ab, #ff9f50, #F7C6A2);
     }
 
-    remi-dashboard .summary-item.third {
+    .summary-item.third {
         background: linear-gradient(to right, #ff2a90, #d80b6d, #fb2d90);
     }
 
-    remi-dashboard .orders {
+    .orders {
         width: 367px;
         margin: 4em 1em;
 
     }
 
-    remi-dashboard .orders-inner,
+    .orders-inner,
     .profits-inner {
         border-radius: 16px;
-        background-color: #332d2c;
         min-height: 400px;
         overflow: hidden;
     }
 
-    remi-dashboard .profits {
+    .profits {
         margin: 4em 1em;
     }
 
-    remi-dashboard .profits-inner {}
+    .profits-inner {}
 
-    remi-dashboard .profits-inner header {
+    .profits-inner header {
         height: 100px;
     }
 
-    remi-dashboard .summary-info>* {
+    .summary-info>* {
         display: block
     }
 
-    remi-dashboard .summary-number {
+    .summary-number {
         font-size: 2rem;
+        color: white;
     }
 
-    remi-dashboard .summary-title {
+    .summary-title {
         color: #ffffff94;
     }
 
-    remi-dashboard .summary-info>iron-icon {
+    .summary-info>iron-icon {
         --iron-icon-height: 65px;
         --iron-icon-width: 65px;
         margin-left: auto;
     }
 
-    remi-dashboard canvas {
+    canvas {
         height: 300px !important;
         width: 100% !important;
     }
-</style>
+}
+
+

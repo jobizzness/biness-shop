@@ -7,14 +7,15 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
-import { html } from '@polymer/polymer/polymer-element.js';
-import { PageViewElement } from "../../components/page-view-element";
-import { connect } from 'pwa-helpers/connect-mixin.js';
-import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+import { html } from '@polymer/polymer/polymer-element.js'
+import { PageViewElement } from "../../components/page-view-element"
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js'
 
-import { store } from '../../store.js';
-import template from './template.html';
-import Chart from 'chart.js';
+import { store } from '../../store.js'
+import template from './template.html'
+import './style.css'
+import Chart from 'chart.js'
 
 
 /**

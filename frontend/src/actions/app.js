@@ -7,10 +7,7 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
-import * as Auth from '../core/auth.js';
-import { User } from '../core/user.js';
 
-export const UPDATE_USER = 'UPDATE_USER';
 export const UPDATE_ROUTE = 'UPDATE_ROUTE';
 export const UPDATE_OFFLINE = 'UPDATE_OFFLINE';
 export const UPDATE_LOADING = 'UPDATE_LOADING';
@@ -39,7 +36,7 @@ const loadPage = (page) => async (dispatch) => {
 
   // If the page is invalid, set to 404. The is also a good spot to check
   // other location things like sub-path or query params.
-  if (['home', 'product', 'shop', 'about', 'contact', 'cart', 'login',
+  if (['home', 'product', 'shop', 'about', 'contact', 'cart', 'auth',
       'dashboard', 'product-edit', 'orders', 'purchases', 'category'].indexOf(page) === -1) {
     page = 'view404';
   }
@@ -64,8 +61,8 @@ const loadPage = (page) => async (dispatch) => {
     case 'about':
       await import('../pages/remi-about');
       break;
-    case 'login':
-      await import('../pages/remi-login');
+    case 'auth':
+      await import('../pages/biness-auth');
       break;
     case 'dashboard':
       await import('../pages/remi-dashboard');
@@ -128,24 +125,6 @@ export const updateLoading = (loading) => {
 }
 
 
-
-export const login = (data) => async (dispatch, state) => {
-  await Auth.login(data);
-}
-
-export const listenUserChange = () => (dispatch, state) => {
-  // Auth._onAuthChange((user) => {
-  //   User.onChanged(user, actualUser => dispatch(updateUser(actualUser)));
-  // })
-  
-}
-
-export const updateUser = (user) => {
-  return {
-    type: UPDATE_USER,
-    user
-  }
-}
 
 export const hideAppOverflow = (value) => {
   if(value){

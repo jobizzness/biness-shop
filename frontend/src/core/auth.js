@@ -12,7 +12,7 @@ export const login = async (email, password) => {
     return new Promise(async (resolve, reject) => {
         try {
 
-            let response = await Request.post(`${API_URL}/auth/login`, {
+            let response = await (new Request()).post(`${API_URL}/auth/login`, {
                 body: {
                     email,
                     password
@@ -35,7 +35,7 @@ export const register = async (email, password) => {
     return new Promise(async (resolve, reject) => {
         try {
 
-            let response = await Request.post(`${API_URL}/auth/register`, {
+            let response = await (new Request()).post(`${API_URL}/auth/register`, {
                 body: {
                     email,
                     password
@@ -63,7 +63,7 @@ export const logout = async () => {
 export const fetchUser = async () => {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await Request.get(`${API_URL}/user`, {})
+            let response = await (new Request()).get(`${API_URL}/user`, {})
             let user = await response.json()
             resolve(user);
 

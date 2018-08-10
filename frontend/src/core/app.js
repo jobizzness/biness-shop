@@ -3,7 +3,7 @@ import { CONFIG } from '../config.js';
 
 window.__BINESS_SHOP__ = window.__BINESS_SHOP__ || new class {
 
-    gconstructor() {
+    constructor() {
         this.element = document.querySelector(CONFIG.root);
         this.API_URL = CONFIG.API_URL
     }
@@ -14,7 +14,7 @@ window.__BINESS_SHOP__ = window.__BINESS_SHOP__ || new class {
     * @return bool - success or failure
     */
     get Request() {
-        return new Request();
+        return Request;
     }
 
     createRequest() {

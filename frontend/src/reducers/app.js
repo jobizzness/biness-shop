@@ -9,8 +9,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 */
 
 import { UPDATE_ROUTE, UPDATE_OFFLINE,
-  OPEN_SNACKBAR, CLOSE_SNACKBAR, UPDATE_LOADING,
-        UPDATE_USER } from '../actions/app.js';
+  OPEN_SNACKBAR, CLOSE_SNACKBAR, UPDATE_LOADING} from '../actions/app.js';
+import {UPDATE_USER} from '../actions/auth.js';
 
 const app = (state = {drawerOpened: false, user: null, route: {}}, action) => {
   switch (action.type) {
