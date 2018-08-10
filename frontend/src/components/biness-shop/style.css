@@ -3,13 +3,13 @@
 }
 
 :root{
-    --app-primary-color: #393433;
+    --app-primary-color: #6e657f;
     --app-secondary-color: #3F51B5;
     --app-background-color: #F6F6F6;
     --app-light-text-color: #353535;
     --app-section-even-color: #f7f7f7;
 
-    --app-header-background-color: white;
+    --app-header-background-color: var(--app-primary-color);
     --app-header-text-color: var(--app-light-text-color);
     --app-header-selected-color: var(--app-secondary-color);
 
@@ -59,7 +59,7 @@ biness-shop {
     }
 
     [main-title] {
-        font-family: 'Pacifico', cursive;
+        font-family: 'Kirang Haerang', cursive;
         text-transform: lowercase;
         font-size: 30px;
         /* In the narrow layout, the toolbar is offset by the width of the
@@ -68,7 +68,7 @@ biness-shop {
         */
         padding-right: 44px;
         pointer-events: auto !important;
-        color: var(--app-light-text-color);
+        color: white;
     }
 
     .toolbar-list {
@@ -89,6 +89,10 @@ biness-shop {
                 border-radius: 26px;
             }
         }
+    }
+
+    .toolbar-top, .toolbar-top button{
+        color: white;
     }
 
     .menu-btn {

@@ -16,7 +16,9 @@ import { Switch } from "@material/mwc-switch";
 
 import { store } from '../../store.js';
 import template from './template.html';
+import './style.css'
 import '../../components/remi-media-uploader.js';
+
 
 import { shop } from "../../reducers/shop.js";
 import { publishProduct, setEditingProduct, getProductBySlug } from "../../actions/shop.js";
@@ -26,7 +28,6 @@ store.addReducers({
     shop
 });
 
-InjectGlobalStyle({ name: 'remi-product-editor' }, () => import('./style.html'));
 InjectGlobalStyle({name: 'material-textfield'}, () => import('../../components/material/textfield.html'));
 InjectGlobalStyle({name: 'material-button'}, () => import('../../components/material/button.html'));
 

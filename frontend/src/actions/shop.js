@@ -7,7 +7,7 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
-import { Shop } from "../core/shop.js";
+import * as Shop from "../core/shop.js";
 
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const CHECKOUT_SUCCESS = 'CHECKOUT_SUCCESS';
@@ -23,16 +23,16 @@ export const getProductListing = () => async (dispatch) => {
   // that by dispatching an async action (that you would dispatch when you
   // succesfully got the data back)
   dispatch(setFetching(true))
-  //const data = await Shop.getAllProduct();
+  const response = await Shop.fetchListing();
   dispatch(setFetching(false))
 
   // You could reformat the data in the right format as well:
-  //const products = data;
+  const products = response.data;
 
-  // dispatch({
-  //   type: GET_PRODUCTS,
-  //   products: products
-  // });
+  dispatch({
+    type: GET_PRODUCTS,
+    products: products
+  });
 };
 
 export const publishProduct = (data) => async (dispatch) => {

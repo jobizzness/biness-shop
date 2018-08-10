@@ -1,6 +1,7 @@
 
 remi-home{
     visibility: visible !important;
+    padding: 3em 0;
 
     remi-product-item{
         height: 550px;
@@ -22,7 +23,6 @@ remi-home{
             padding: 16px;
             font-weight: 600;
             color: #0e0e0e94;
-            border-bottom: 1px solid #d2d2d2;
 
             &:hover, &[selected]{
                 border-color: black;

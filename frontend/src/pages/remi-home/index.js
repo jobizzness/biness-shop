@@ -23,7 +23,7 @@ import { getProductListing, setActiveProduct } from "../../actions/shop.js";
 import { InjectGlobalStyle} from '../../core/utils.js';
 
 import { shop } from "../../reducers/shop.js";
-import { RemiApp} from '../../core/app.js'
+import { BinessShop} from '../../core/app.js'
 import './style.css';
 
 store.addReducers({
@@ -95,7 +95,7 @@ class RemiHome extends connect(store)(PageViewElement) {
     }
 
     _openFilter(e){
-        RemiApp.element.dispatchEvent(new CustomEvent('toggle-filter', {bubbles: false, detail: {}}))
+        BinessShop.element.dispatchEvent(new CustomEvent('toggle-filter', {bubbles: false, detail: {}}))
     }
 
     _view(e) {
