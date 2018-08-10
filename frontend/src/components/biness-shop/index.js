@@ -1,7 +1,7 @@
 
 
 import { html } from '@polymer/polymer/polymer-element';
-import { RemiApp } from '../../core/app.js';
+import { BinessShop } from '../../core/app.js';
 
 import '@polymer/app-layout/app-drawer/app-drawer.js';
 import '@polymer/app-layout/app-header/app-header.js';
@@ -20,7 +20,7 @@ import './style.css';
 import template from './template.html';
 import { lightComponent } from '../lightComponent.js';
 
-window.customElements.define('remi-app', class extends connect(store)(lightComponent) {
+window.customElements.define('biness-shop', class extends connect(store)(lightComponent) {
 
   static get template() {
 

@@ -23,16 +23,16 @@ export const getProductListing = () => async (dispatch) => {
   // that by dispatching an async action (that you would dispatch when you
   // succesfully got the data back)
   dispatch(setFetching(true))
-  const data = await Shop.getAllProduct();
+  //const data = await Shop.getAllProduct();
   dispatch(setFetching(false))
 
   // You could reformat the data in the right format as well:
-  const products = data;
+  //const products = data;
 
-  dispatch({
-    type: GET_PRODUCTS,
-    products: products
-  });
+  // dispatch({
+  //   type: GET_PRODUCTS,
+  //   products: products
+  // });
 };
 
 export const publishProduct = (data) => async (dispatch) => {

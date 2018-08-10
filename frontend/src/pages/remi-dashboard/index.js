@@ -16,8 +16,6 @@ import { store } from '../../store.js';
 import template from './template.html';
 import Chart from 'chart.js';
 
-import { InjectGlobalStyle } from '../../core/utils.js';
-InjectGlobalStyle({ name: 'remi-dashboard' }, () => import('./style.html'));
 
 /**
  * `bn-project` Description

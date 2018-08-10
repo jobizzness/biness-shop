@@ -1,35 +1,27 @@
-import firebaseApp from "firebase/app";
+import { Request } from './request.js';
+import { CONFIG } from '../config.js';
 
-window.__REMI_APP__ = window.__REMI_APP__ || new class {
+window.__BINESS_SHOP__ = window.__BINESS_SHOP__ || new class {
 
-    get firebaseConfig() {
-        return {
-            apiKey: "AIzaSyCo-dZOVaM_ZzNgbTNxptrPnSB086hZMgo",
-            authDomain: "reminiscebyro-b534f.firebaseapp.com",
-            databaseURL: "https://reminiscebyro-b534f.firebaseio.com",
-            projectId: "reminiscebyro-b534f",
-            storageBucket: "reminiscebyro-b534f.appspot.com",
-            messagingSenderId: "644416860629"
-        }
+    gconstructor() {
+        this.element = document.querySelector(CONFIG.root);
+        this.API_URL = CONFIG.API_URL
     }
 
-    constructor() {
-        this.firebase = this._initializeFirebase(this.firebaseConfig);
-        this.element = document.querySelector('remi-app');
+    /**
+    * @desc opens a modal window to display a message
+    * @param string msg - the message to be displayed
+    * @return bool - success or failure
+    */
+    get Request() {
+        return new Request();
     }
 
-    _initializeFirebase(config) {
-        return firebaseApp.initializeApp(config);
+    createRequest() {
+
     }
 
 }();
-
-// We are exporting firebase app
-export const firebase = () => {
-    return window.__REMI_APP__.firebase.firebase_;
-}
-
-
 //Export remi app or something
 //this is one useless comment
-export const RemiApp = window.__REMI_APP__;
+export const BinessShop = window.__BINESS_SHOP__;

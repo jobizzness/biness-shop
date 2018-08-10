@@ -15,6 +15,19 @@
 
 const Route = use('Route')
 
+// Auth routes
+Route.post('/auth/:action', 'AuthController.index')
+
+
 Route.get('/', ({ request }) => {
   return { greeting: 'Hello world in JSON' }
 })
+
+Route
+  .group(() => {})
+
+Route
+  .resource('user', 'UserController')
+  .apiOnly()
+  .middleware('auth')
+

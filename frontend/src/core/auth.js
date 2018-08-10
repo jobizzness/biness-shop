@@ -1,47 +1,87 @@
-import auth from "firebase/auth";
-import { firebase } from '../core/app.js';
+import { BinessShop } from './app.js'
 
-export const Auth = new class {
-    constructor() {
-    }
+const Request = BinessShop.Request;
+const API_URL = BinessShop.API_URL
 
-    login({email, password}) {
-        switch ('dsds') {
-            case 'facebook':
-                return this._loginWithFacebook();
-        
-            default:
-                return this._loginWithEmail(email, password);
+/**
+* @desc will attempt a login and fetchs the user object
+* @param {email, password} string - the message to be displayed
+* @return promist - success or failure
+*/
+export const login = async (email, password) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            let response = await Request.post(`${API_URL}/auth/login`, {
+                body: {
+                    email,
+                    password
+                }
+            })
+
+            let tokenData = await response.json()
+            if (tokenData.error) reject(tokenData)
+            storeToken(tokenData.data.token)
+            resolve(tokenData.data);
+
+        } catch (error) {
+            reject(error);
         }
-    }
+    })
 
-    _onAuthChange(callback){
-        return firebase().auth().onAuthStateChanged(callback);
-    }
+}
 
-    _loginWithEmail(email, password){
-        return firebase().auth().signInWithEmailAndPassword(email, password)
-    }
+export const register = async (email, password) => {
+    return new Promise(async (resolve, reject) => {
+        try {
 
-    _loginWithFacebook(){
+            let response = await Request.post(`${API_URL}/auth/register`, {
+                body: {
+                    email,
+                    password
+                }
+            })
 
-        let provider = firebase().auth.GoogleAuthProvider;
-        firebase().auth().signInWithPopup(new provider()).then(function (result) {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            var token = result.credential.accessToken;
-            // The signed-in user info.
-            var user = result.user;
-            // ...
-        }).catch(function (error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // The email of the user's account used.
-            var email = error.email;
-            // The firebase.auth.AuthCredential type that was used.
-            var credential = error.credential;
-            // ...
-        });
-    }
+            let tokenData = await response.json()
+            storeToken(tokenData.data.token)
+            resolve(tokenData.data);
 
-}();
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+
+export const recoverAccount = async (email) => {
+
+}
+
+export const logout = async () => {
+    this.storeToken(null);
+}
+
+export const fetchUser = async () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let response = await Request.get(`${API_URL}/user`, {})
+            let user = await response.json()
+            resolve(user);
+
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+
+
+const authChanged = (auth) => {
+    const token = auth && auth.data.token || null;
+    storeToken(token)
+}
+
+const storeToken = (token) => {
+    localStorage.setItem('auth', token);
+    document.dispatchEvent(new CustomEvent('auth-changed', { detail: token }));
+}
+
+

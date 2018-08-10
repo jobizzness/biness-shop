@@ -31,7 +31,7 @@ body {
     background-color: var(--app-background-color);
 }
 
-remi-app {
+biness-shop {
     --app-drawer-width: 256px;
     display: block;
 
@@ -150,6 +150,17 @@ remi-app {
         border-radius: 8px;
     }
 
+    &[hide-nav] .toolbar-list {
+        display: none;
+    }
+
+    &[hide-nav] #menu-btn {
+        display: none !important;
+    }
+
+    &[hide-nav] #back-btn {
+        display: block;
+    }
 
     paper-progress {
         width: 100%;
@@ -162,17 +173,7 @@ remi-app {
     }
 }
 
-    remi-app[hide-nav] .toolbar-list {
-        display: none;
-    }
-
-    remi-app[hide-nav] #menu-btn {
-        display: none !important;
-    }
-
-    remi-app[hide-nav] #back-btn {
-        display: block;
-    }
+    
 
 
 
@@ -301,7 +302,7 @@ remi-app {
 
 
 /* Flex helpers go here */
-remi-app{
+biness-shop{
     /* fixed position */
 
     .fixed-bottom,

@@ -7,54 +7,25 @@
   Code distributed by Google as part of the polymer project is also
   subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
-import { RemiApp } from './app.js';
+import { BinessShop } from './app.js';
 
 
-const injected = RemiApp.injected = RemiApp.injected || [];
-
-export const convertObjectToArray = (obj) => {
-    let data = []
-    for (let item in obj) {
-        obj[item].key = item;
-        data.push(obj[item])
-    }
-    return data;
-}
-
-export const Inject = (component) => {
-    injected.some((item) => {
-        if (item.name === component) {
-            return item.component
-        }
-    });
-    return makeInjection(component)
-}
-
-const makeInjection = (componentName) => {
-    let service = document.createElement(componentName)
-    document.body.appendChild(service)
-    TravApp.injected.push({
-        name: componentName,
-        component: service
-    });
-    return service;
-}
-
+const injected = BinessShop.injected = BinessShop.injected || [];
 
 
 //injects global style
-export const InjectGlobalStyle = async (component, callback) =>{
-    if (!alreadyInjected(component.name)){
+export const InjectGlobalStyle = async (component, callback) => {
+    if (!alreadyInjected(component.name)) {
 
-        RemiApp.injected.push(component)
-        
+        BinessShop.injected.push(component)
+
         let style = await callback()
-        const documentContainer = document.createElement('div');   
+        const documentContainer = document.createElement('div');
         documentContainer.innerHTML = style.default;
         documentContainer.setAttribute('style', 'display: none;');
         document.head.appendChild(documentContainer);
 
-        
+
     }
 }
 

@@ -17,12 +17,7 @@ import template from './template.html';
 import '../../components/remi-checkout.js';
 import '../../components/remi-cart-item.js';
 import { removeFromCart } from '../../actions/cart.js';
-import { InjectGlobalStyle } from '../../core/utils.js';
 
-//Imports lazy global styles
-InjectGlobalStyle({ name: 'remi-cart' }, () => import('./style.html'));
-InjectGlobalStyle({ name: 'material-button' }, () => import('../../components/material/button.html'));
-InjectGlobalStyle({ name: 'material-textfield' }, () => import('../../components/material/textfield.html'));
 
 /**
  * `bn-project` Description

@@ -7,7 +7,7 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
-import { Auth } from '../core/auth.js';
+import * as Auth from '../core/auth.js';
 import { User } from '../core/user.js';
 
 export const UPDATE_USER = 'UPDATE_USER';
@@ -134,9 +134,9 @@ export const login = (data) => async (dispatch, state) => {
 }
 
 export const listenUserChange = () => (dispatch, state) => {
-  Auth._onAuthChange((user) => {
-    User.onChanged(user, actualUser => dispatch(updateUser(actualUser)));
-  })
+  // Auth._onAuthChange((user) => {
+  //   User.onChanged(user, actualUser => dispatch(updateUser(actualUser)));
+  // })
   
 }
 
