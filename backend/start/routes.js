@@ -31,3 +31,10 @@ Route
   .apiOnly()
   .middleware('auth')
 
+Route
+  .resource('product', 'ProductController')
+  .apiOnly()
+  .middleware(new Map([
+    [['store', 'update', 'destroy'], ['auth']]
+  ]))
+

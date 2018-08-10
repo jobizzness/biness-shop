@@ -8,8 +8,8 @@ class Transformer {
         throw 'no implementation of tranform method.'
     }
 
-    transformCollection(){
-
+    transformCollection(collection){
+        return collection.map((item) => this.transform(item))
     }
 }
 
