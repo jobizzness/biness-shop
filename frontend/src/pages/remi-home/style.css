@@ -1,7 +1,6 @@
 
 remi-home{
     visibility: visible !important;
-    padding: 3em 0;
 
     remi-product-item{
         height: 550px;
@@ -15,6 +14,7 @@ remi-home{
 
     .home-wrapper>header{
         margin-bottom: 3em;
+        padding: 16px;
     }
     .tabs{
         padding: 16px;
@@ -39,12 +39,12 @@ remi-home{
             height: 350px;
         }
 
-        .home-wrapper>header{
-            display: block !important;
+        button.mdc-button{
+            margin-top: 16px;
         }
 
-        button.mdc-button{
-            margin-top: 35px;
+        .home-wrapper>header{
+            padding: 16px 0;
         }
     }
 
