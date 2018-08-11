@@ -31,12 +31,12 @@
     
   </app-toolbar>
   <!-- This gets hidden on a small screen-->
-  <nav class="toolbar-list">
+  <!-- <nav class="toolbar-list">
     <a selected$="[[is_selected(page, 'home')]]" href="/">Home</a>
     <a selected$="[[is_selected(page, 'shop')]]" href="/shop">Shop</a>
     <a selected$="[[is_selected(page, 'about')]]" href="/about">Our Story</a>
     <a selected$="[[is_selected(page, 'contact')]]" href="/contact">Get in touch</a>
-  </nav>
+  </nav> -->
   <!-- <category-nav hidden$="[[!is_selected(page, 'shop')]]"></category-nav> -->
   
 </app-header>
@@ -46,7 +46,7 @@
   <app-drawer opened="{{_drawerOpened}}">
     <nav class="drawer-list">
       <a selected$="[[is_selected(_page, 'view2')]]" href="/dashboard">Dashboard</a>
-      <a selected$="[[is_selected(_page, 'view3')]]" href="/shop">Shop</a>
+      <a selected$="[[is_selected(_page, 'view3')]]" href="/store">Store</a>
       <a selected$="[[is_selected(_page, 'view3')]]" href="/orders">Orders</a>
       <a selected$="[[is_selected(_page, 'view3')]]" href="/blogging">Blog</a>
     </nav>
@@ -62,10 +62,14 @@
   <remi-shop page="shop"></remi-shop>
   <remi-cart page="cart"></remi-cart>
   <biness-auth page="auth"></biness-auth>
-  <remi-dashboard page="dashboard"></remi-dashboard>
   <remi-products page="products"></remi-products>
   <remi-product-editor page="product-edit"></remi-product-editor>
+  
+  <!-- Admin pages -->
   <remi-orders page="orders"></remi-orders>
+  <biness-store page="store"></biness-store>
+  <remi-dashboard page="dashboard"></remi-dashboard>
+  
 </main>
 
 <footer class="app-footer pad">

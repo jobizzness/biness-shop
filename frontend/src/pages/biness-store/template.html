@@ -1,0 +1,73 @@
+
+<div class="page-wrapper">
+    <div class="layout horizontal content">
+        <aside class="flex">
+            <!-- Categories -->
+            <div class="categories-card">
+                <header>
+                    <h2>Categories</h2>
+                </header>
+                <nav class="layout vertical">
+                    <a href="/store/shoes" class="tab-link" selected>
+                        <span>Shoes</span>
+                        <span class="flex"></span>
+                        <span>(20)</span>
+                    </a>
+                    <a href="/store/clothes" class="tab-link" selected>
+                        <span>Clothes</span>
+                        <span class="flex"></span>
+                        <span>(130)</span>
+                    </a>
+                    <a href="/store/jackets" class="tab-link" selected>
+                        <span>Jackets</span>
+                        <span class="flex"></span>
+                        <span>35</span>
+                    </a>
+                    <a href="/store/jeans" class="tab-link" selected>
+                        <span>Jeans</span>
+                        <span class="flex"></span>
+                        <span>(27)</span>
+                    </a>
+                    <a href="/store/pants" class="tab-link" selected>
+                        <span>Pants</span>
+                        <span class="flex"></span>
+                        <span>(33)</span>
+                    </a>
+                    <a href="/store/accessories" class="tab-link" selected>
+                        <span>Accessories</span>
+                        <span class="flex"></span>
+                        <span>(40)</span>
+                    </a>
+
+                </nav>
+            </div>
+        </aside>
+        <main class="flex">
+            <header>
+                <div class="title-wrapper">
+                    <h1>Store <span>(1290)</span></h1>
+                </div>
+                <nav class="layout horizontal center">
+                    <!-- Tabs to filter based on category -->
+                    <div class="tabs horizontal-scroll">
+                        <a on-click="sort" data-sort="latest" class="tab-link" selected><span>Latest First</span></a>
+                        <a on-click="sort" data-sort="popular" class="tab-link"><span>Popular First</span></a>
+                        <a on-click="sort" data-sort="low-stock" class="tab-link"><span>Low stocks</span></a>
+                    </div>
+                    <span class="flex"></span>
+                    <button class="mdc-button mdc-button--dense" on-click="_openFilter">
+                        <iron-icon icon="bn-icons:filter"></iron-icon>
+                    </button>
+                </nav>
+            </header>
+            <div class="pad products">
+                <template is="dom-repeat" items="[[bestSellers]]" as="product">
+                    <a href$="/product-edit/[[product.slug]]" on-click="_view">
+                        <remi-product-item featured forAdmin$="[[_userIsAdmin(user)]]" data="[[product]]"></remi-product-item>
+                    </a>
+                </template>
+            </div>
+        </main>
+    </div>
+    
+</div>

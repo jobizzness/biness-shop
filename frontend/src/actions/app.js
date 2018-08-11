@@ -7,6 +7,7 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
+import {ROUTES} from '../route.js';
 
 export const UPDATE_ROUTE = 'UPDATE_ROUTE';
 export const UPDATE_OFFLINE = 'UPDATE_OFFLINE';
@@ -37,8 +38,7 @@ const loadPage = (page) => async (dispatch) => {
 
   // If the page is invalid, set to 404. The is also a good spot to check
   // other location things like sub-path or query params.
-  if (['shop', 'product', 'about', 'contact', 'cart', 'auth',
-      'dashboard', 'product-edit', 'orders', 'purchases', 'category'].indexOf(page) === -1) {
+  if (ROUTES.public.indexOf(page) === -1) {
     page = 'view404';
   }
 
@@ -70,6 +70,9 @@ const loadPage = (page) => async (dispatch) => {
       break;
     case 'orders':
       await import('../pages/remi-orders');
+      break;
+    case 'store':
+      await import('../pages/biness-store');
       break;
     default:
       await import('../pages/remi-shop');

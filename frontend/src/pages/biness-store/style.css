@@ -1,0 +1,82 @@
+biness-store{
+    visibility: visible !important;
+    
+    .page-wrapper{
+        padding-top: 3em;
+    }
+
+    .content{
+        max-width: 1300px;
+    }
+
+    aside{
+        max-width: 300px;
+        min-height: 100vh;
+    }
+
+    main{
+        padding: 0 16px;
+
+        header{
+            padding: 0 16px;
+        }
+    }
+
+    .title-wrapper{
+        padding: 1em 0;
+    }
+
+    h1{
+        margin: 0;
+        font-size: 32px;
+        span{
+            font-weight: 400;
+            font-size: 15px;
+        }
+    }
+
+    .tabs{
+        padding: 16px;
+
+        .tab-link{
+            padding: 16px;
+            font-weight: 600;
+            color: #0e0e0e94;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            
+            &:hover, &[selected]{
+                color: black;
+                border-color: #6e657f;
+            }
+        }
+    }
+
+    nav{
+        margin-top: 16px;
+        background-color: white;
+        padding: 16px;
+    }
+
+    .main{
+        padding: 3em
+    }
+
+    .categories-card{
+        min-height: 300px;
+        padding: 2em 16px;
+        background-color: white;
+
+        nav{
+            >a{
+                display: flex;
+            }
+        }
+    }
+
+    .products{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 16px;
+    }
+}
