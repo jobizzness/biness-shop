@@ -25,7 +25,7 @@ export const login = (email, password, listener = null) => async (dispatch) => {
 */
 export const register = (email, password, listener = null) => async (dispatch) => {
     try {
-        let auth = await Auth.login(email, password)
+        let auth = await Auth.register(email, password)
         if (listener) listener.registerCompletes(auth)
     } catch (error) {
         if (listener) listener.registerCompletes(null, error)

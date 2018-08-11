@@ -97,7 +97,7 @@ class BnAuth extends connect(store)(PageViewElement) {
     */
     login(e) {
         e.preventDefault()
-        let form = this._getForm(e)
+        let form = this.$.loginForm
 
         if (form && form.reportValidity()) {
             const email = form.querySelector('input[type=email]').value
@@ -114,7 +114,7 @@ class BnAuth extends connect(store)(PageViewElement) {
     */
     register(e) {
         e.preventDefault()
-        let form = this._getForm(e)
+        let form = this.$.registerForm
 
         if (form && form.reportValidity()) {
             const email = form.querySelector('input[type=email]').value
@@ -126,7 +126,7 @@ class BnAuth extends connect(store)(PageViewElement) {
     registerCompletes(auth, error) {
         this.loading = false;
         if (error) {
-
+            console.log(error)
         } else {
             this.redirect()
         }
@@ -135,7 +135,7 @@ class BnAuth extends connect(store)(PageViewElement) {
     loginCompletes(auth, error) {
         this.loading = false;
         if (error) {
-
+            console.log(error)
         } else {
             this.redirect()
         }

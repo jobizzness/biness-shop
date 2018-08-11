@@ -43,6 +43,7 @@ export const register = async (email, password) => {
             })
 
             let tokenData = await response.json()
+            if (tokenData.error) reject(tokenData)
             storeToken(tokenData.data.token)
             resolve(tokenData.data);
 

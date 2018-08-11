@@ -14,6 +14,7 @@ import { MDCRipple } from '@material/ripple';
 
 import { store } from '../../store.js';
 import template from './template.html';
+import './style.css';
 import '../../components/remi-checkout.js';
 import '../../components/remi-cart-item.js';
 import { removeFromCart } from '../../actions/cart.js';
