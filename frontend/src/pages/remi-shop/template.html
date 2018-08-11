@@ -1,30 +1,27 @@
 
-<section class="app-section feature pad" style="margin-bottom: 4em;">
-    <div class="content">
-        <div class="center heading-wrapper pad layout horizontal">
-            <h1 class="mdc-typography--headline5">Shop</h1>
+<div class="page-wrapper">
+    <div class="content home-wrapper">
+        <header class="layout horizontal center">
+            <!-- Tabs to filter based on category -->
+            <div class="tabs horizontal-scroll">
+                <a href="/category/shoes" class="tab-link" selected><span>Shoes</span></a>
+                <a href="/category/clothes" class="tab-link"><span>Clothes</span></a>
+                <a href="/category/jeans" class="tab-link"><span>Jeans</span></a>
+                <a href="/category/jackets" class="tab-link"><span>Jackets</span></a>
+                <a href="/category/shirts" class="tab-link"><span>Shirts</span></a>
+                <a href="/category/pants" class="tab-link"><span>Pants</span></a>
+            </div>
             <span class="flex"></span>
             <button class="mdc-button mdc-button--dense" on-click="_openFilter">
                 <iron-icon icon="bn-icons:filter"></iron-icon>
             </button>
-        </div>
-        <template is="dom-if" if="[[_userIsAdmin(user)]]">
-            <header class="layout horizontal center toolbar">
-                <span class="flex"></span>
-                <!-- <a href="/product-edit/create" on-click="_create">
-                    <button class="mdc-button accent-btn">
-                        Add Product
-                    </button>
-                </a> -->
-                
-            </header>
-        </template>
-        <div class="feature-grid">
-            <template is="dom-repeat" items="[[products]]" as="product">
-                <a href$="/product/[[product.slug]]" class="feature-item" on-click="_view" data="[[product]]">
+        </header>
+        <div class="home-products ">
+            <template is="dom-repeat" items="[[bestSellers]]" as="product">
+                <a href$="/product/[[product.slug]]" on-click="_view">
                     <remi-product-item featured forAdmin$="[[_userIsAdmin(user)]]" data="[[product]]"></remi-product-item>
                 </a>
             </template>
         </div>
     </div>
-</section>
+</div>

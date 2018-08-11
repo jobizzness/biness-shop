@@ -7,22 +7,22 @@
     Code distributed by Google as part of the polymer project is also
     subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
-import { html } from '@polymer/polymer/polymer-element.js';
-import { PageViewElement } from '../../components/page-view-element.js';
-import { MDCRipple } from '@material/ripple';
-import { connect } from 'pwa-helpers/connect-mixin.js';
+import { html } from '@polymer/polymer/polymer-element.js'
+import { PageViewElement } from '../../components/page-view-element.js'
+import { MDCRipple } from '@material/ripple'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import '@polymer/iron-image'
 
-import '@polymer/iron-image';
-import "../../components/remi-product-item";
-import "../../components/biness-text.js";
+import "../../components/remi-product-item"
+import "../../components/biness-text.js"
 import template from './template.html'
 
-import { store } from '../../store.js';
+import { store } from '../../store.js'
 
-import { getProductListing, setActiveProduct } from "../../actions/shop.js";
-import { InjectGlobalStyle} from '../../core/utils.js';
+import { getProductListing, setActiveProduct, getProductsInCategory } from "../../actions/shop.js"
+import { InjectGlobalStyle} from '../../core/utils.js'
 
-import { shop } from "../../reducers/shop.js";
+import { shop } from "../../reducers/shop.js"
 import { BinessShop} from '../../core/app.js'
 import './style.css';
 
@@ -55,8 +55,12 @@ class RemiHome extends connect(store)(PageViewElement) {
     */
     static get properties() {
         return {
-            bestSellers:{
+            products:{
                 type: Array
+            },
+            slug: {
+                type: String,
+                observer: '_slugChanged'
             }
         }
     }
@@ -92,10 +96,15 @@ class RemiHome extends connect(store)(PageViewElement) {
         this.user = state.app.user;
         this.bestSellers = state.shop.products;
         this.editMode = false;
+        this.slug = state.app.route.slug;
     }
 
     _openFilter(e){
         BinessShop.element.dispatchEvent(new CustomEvent('toggle-filter', {bubbles: false, detail: {}}))
+    }
+
+    _slugChanged(slug) {
+        if (this.active && slug) store.dispatch(getProductsInCategory(slug));
     }
 
     _view(e) {

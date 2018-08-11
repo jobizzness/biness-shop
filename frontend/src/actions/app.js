@@ -14,11 +14,12 @@ export const UPDATE_LOADING = 'UPDATE_LOADING';
 export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
 let ROUTE = {};
+const DEFAULT_PAGE = 'shop';
 
 export const navigate = (path) => (dispatch) => {
   dispatch(updateLoading(true));
   // Extract the page name from path.
-  const page = path === '/' ? 'home' : path.split('/')[1];
+  const page = path === '/' ? DEFAULT_PAGE : path.split('/')[1];
   const slug = page ? path.split('/')[2] : null;
 
   ROUTE = {
@@ -36,16 +37,16 @@ const loadPage = (page) => async (dispatch) => {
 
   // If the page is invalid, set to 404. The is also a good spot to check
   // other location things like sub-path or query params.
-  if (['home', 'product', 'shop', 'about', 'contact', 'cart', 'auth',
+  if (['shop', 'product', 'about', 'contact', 'cart', 'auth',
       'dashboard', 'product-edit', 'orders', 'purchases', 'category'].indexOf(page) === -1) {
     page = 'view404';
   }
 
   switch(page) {
-    case 'home':
+    case DEFAULT_PAGE:
     case 'category':
-      await import('../pages/remi-home');
-      page = 'home'
+      await import('../pages/remi-shop');
+      page = 'shop'
       // Put code here that you want it to run every time when
       // navigate to view1 page and my-view1.js is loaded
       break;
@@ -54,9 +55,6 @@ const loadPage = (page) => async (dispatch) => {
       break;
     case 'cart':
       await import('../pages/remi-cart');
-      break;
-    case 'shop':
-      await import('../pages/remi-shop');
       break;
     case 'about':
       await import('../pages/remi-about');
@@ -74,7 +72,7 @@ const loadPage = (page) => async (dispatch) => {
       await import('../pages/remi-orders');
       break;
     default:
-      await import('../pages/remi-home');
+      await import('../pages/remi-shop');
   }
 
   ROUTE.page = page;

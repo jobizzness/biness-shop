@@ -35,6 +35,10 @@ export const getProductListing = () => async (dispatch) => {
   });
 };
 
+export const getProductsInCategory = (category) => async (dispatch) => {
+  
+}
+
 export const publishProduct = (data) => async (dispatch) => {
   
   //Set loading to true

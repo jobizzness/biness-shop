@@ -7,28 +7,30 @@
     Code distributed by Google as part of the polymer project is also
     subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import { html } from '@polymer/polymer/polymer-element.js'
+import { PageViewElement } from '../../components/page-view-element.js'
+import { MDCRipple } from '@material/ripple'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import '@polymer/iron-image'
+
+import "../../components/remi-product-item"
+import "../../components/biness-text.js"
 import template from './template.html'
-import '@polymer/iron-image';
-import { connect } from 'pwa-helpers/connect-mixin.js';
 
-import { store } from '../../store.js';
-import "../../components/remi-product-item";
-import "../../components/material/button.html";
-import { PageViewElement } from '../../components/page-view-element.js';
-import { slideUp, slideDown } from '../../components/animation.js';
-import { getProductListing, setActiveProduct, setEditingProduct } from "../../actions/shop.js";
-import { InjectGlobalStyle } from '../../core/utils.js';
+import { store } from '../../store.js'
+
+import { getProductListing, setActiveProduct, getProductsInCategory } from "../../actions/shop.js"
+import { InjectGlobalStyle } from '../../core/utils.js'
+
+import { shop } from "../../reducers/shop.js"
+import { BinessShop } from '../../core/app.js'
 import './style.css';
-
-//Import lazy global style
-InjectGlobalStyle({name: 'material-button'}, () => import('../../components/material/button.html'));
-
-import { shop } from "../../reducers/shop.js";
 
 store.addReducers({
     shop
 });
+
+InjectGlobalStyle({ name: 'material-button' }, () => import('../../components/material/button.html'));
 
 /**
  * `ts-home` Description
@@ -39,7 +41,8 @@ store.addReducers({
  * 
  */
 class RemiShop extends connect(store)(PageViewElement) {
-    
+
+
     static get template() {
         return html([
             template
@@ -47,23 +50,24 @@ class RemiShop extends connect(store)(PageViewElement) {
 
     }
 
-    static get observers(){
-        return [
-        ]
-    }
-
     /**
     * Object describing property-related metadata used by Polymer features
     */
     static get properties() {
         return {
-            
+            products: {
+                type: Array
+            },
+            slug: {
+                type: String,
+                observer: '_slugChanged'
+            }
         }
     }
 
     hide() {
         return new Promise(async (resolve, reject) => {
-            const animation = await slideDown(this);
+            //const animation = await fadeOut(this);
             this.active = false;
             resolve();
         })
@@ -73,18 +77,12 @@ class RemiShop extends connect(store)(PageViewElement) {
     show() {
         return new Promise(async (resolve, reject) => {
             this.active = true;
-            const animation = await slideUp(this);
+            //const animation = await fadeIn(this);
             resolve();
         })
 
     }
 
-    _view(e){
-        let node = e.target;
-        let data = node.data;
-
-        store.dispatch(setActiveProduct(data));
-    }
     /**
      * Instance of the element is created/upgraded. Use: initializing state,
      * set up event listeners, create shadow dom.
@@ -94,33 +92,41 @@ class RemiShop extends connect(store)(PageViewElement) {
         super();
     }
 
-    connectedCallback(){
-        super.connectedCallback();
-    }
-
-    _stateChanged(state){
+    _stateChanged(state) {
         this.user = state.app.user;
-        this.products = state.shop.products;
-    }
-
-    _create(e){
-        store.dispatch(setEditingProduct({}))
+        this.bestSellers = state.shop.products;
+        this.editMode = false;
+        this.slug = state.app.route.slug;
     }
 
     _openFilter(e) {
-        this.dispatchEvent(new CustomEvent('toggle-filter', { bubbles: true, detail: {} }))
+        BinessShop.element.dispatchEvent(new CustomEvent('toggle-filter', { bubbles: false, detail: {} }))
+    }
+
+    _slugChanged(slug) {
+        if (this.active && slug) store.dispatch(getProductsInCategory(slug));
+    }
+
+    _view(e) {
+        let node = e.target;
+        let data = node.data;
+
+        store.dispatch(setActiveProduct(data));
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
     }
 
     /**
      * Use for one-time configuration of your component after local DOM is initialized. 
      */
-    async ready() {
+    ready() {
         super.ready();
-
-        
-        store.dispatch(getProductListing())
-        
+        store.dispatch(getProductListing());
+        const buttonRipple = new MDCRipple(this.querySelector('.mdc-button'));
     }
+
 }
 
 customElements.define('remi-shop', RemiShop);

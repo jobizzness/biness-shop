@@ -2,36 +2,51 @@
 remi-shop{
     visibility: visible !important;
 
-    .feature-grid {
+    remi-product-item{
+        height: 550px;
+    }
+
+    .home-products{
         display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        grid-gap: 24px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 16px;
     }
 
-    .feature-item {
-        grid-column-end: span 2;
-    }
-
-    .toolbar {
-        padding: 16px 0;
-    }
-
-    .heading-wrapper{
+    .home-wrapper>header{
         margin-bottom: 3em;
+        padding: 16px;
     }
-}
-@media only screen and (max-device-width: 480px) and (min-device-width: 320px) {
-    remi-shop{
-        .feature-item {
-            grid-column-end: span 6;
+    .tabs{
+        padding: 16px;
+
+        .tab-link{
+            padding: 16px;
+            font-weight: 600;
+            color: #0e0e0e94;
+
+            &:hover, &[selected]{
+                border-color: black;
+                color: black;
+            }
         }
     }
+    
 }
 
-@media only screen and (max-device-width: 768px) and (min-device-width: 480px) {
+@media only screen and (max-device-width: 768px) {
     remi-shop{
-        .feature-item {
-            grid-column-end: span 3;
+        remi-product-item{
+            height: 350px;
+        }
+
+        button.mdc-button{
+            margin-top: 16px;
+        }
+
+        .home-wrapper>header{
+            padding: 16px 0;
         }
     }
+
+    
 }
