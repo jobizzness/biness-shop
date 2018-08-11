@@ -45,10 +45,22 @@
 <template is="dom-if" if="[[_userIsAdmin(_user)]]">
   <app-drawer opened="{{_drawerOpened}}">
     <nav class="drawer-list">
-      <a selected$="[[is_selected(_page, 'view2')]]" href="/dashboard">Dashboard</a>
-      <a selected$="[[is_selected(_page, 'view3')]]" href="/store">Store</a>
-      <a selected$="[[is_selected(_page, 'view3')]]" href="/orders">Orders</a>
-      <a selected$="[[is_selected(_page, 'view3')]]" href="/blogging">Blog</a>
+      <a selected$="[[is_selected(page, 'dashboard')]]" href="/dashboard">
+        <iron-icon icon="bn-icons:dashboard"></iron-icon>
+        <span>Dashboard</span>
+      </a>
+      <a selected$="[[is_selected(page, 'store')]]" href="/store">
+        <iron-icon icon="bn-icons:cart"></iron-icon>
+        <span>Store</span>
+      </a>
+      <a selected$="[[is_selected(_page, 'view3')]]" href="/orders">
+        <iron-icon icon="bn-icons:orders"></iron-icon>
+        <span>Orders</span>
+      </a>
+      <a selected$="[[is_selected(_page, 'view3')]]" href="/blogging">
+        <iron-icon icon="bn-icons:blog"></iron-icon>
+        <span>Blog</span>
+      </a>
     </nav>
   </app-drawer>
 </template>

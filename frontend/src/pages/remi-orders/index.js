@@ -16,9 +16,8 @@ import '@vaadin/vaadin-grid/vaadin-grid-selection-column.js';
 import '../../components/remi-order-details.js';
 import { store } from '../../store.js';
 import template from './template.html';
-import { InjectGlobalStyle } from '../../core/utils.js';
+import './style.css';
 
-InjectGlobalStyle({ name: 'remi-orders' }, () => import('./style.html'));
 /**
  * `bn-project` Description
  *
