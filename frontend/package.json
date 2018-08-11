@@ -117,6 +117,7 @@
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "simpla": "3.0.1",
+    "sweetalert": "2.1.0",
     "to-lit-html-loader": "0.0.2",
     "web-animations-js": "2.3.1"
   }

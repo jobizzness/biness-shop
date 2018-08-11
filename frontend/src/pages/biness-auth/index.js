@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 import { html } from '@polymer/polymer/polymer-element.js'
 import { PageViewElement } from "../../components/page-view-element"
 import { connect } from 'pwa-helpers/connect-mixin.js'
+import { BinessShop } from '../../core/app.js'
 
 import { store } from '../../store.js'
 import { MDCTextField } from '@material/textfield'
@@ -126,6 +127,7 @@ class BnAuth extends connect(store)(PageViewElement) {
     registerCompletes(auth, error) {
         this.loading = false;
         if (error) {
+            BinessShop.alert('Opps!', 'We know you already! try another email?', 'error')
             console.log(error)
         } else {
             this.redirect()
@@ -135,6 +137,7 @@ class BnAuth extends connect(store)(PageViewElement) {
     loginCompletes(auth, error) {
         this.loading = false;
         if (error) {
+            BinessShop.alert('Opps!', 'We could not find your account!', 'error')
             console.log(error)
         } else {
             this.redirect()
