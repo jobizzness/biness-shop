@@ -19,7 +19,6 @@ import template from './template.html';
 import './style.css'
 import '../../components/remi-media-uploader.js';
 
-
 import { shop } from "../../reducers/shop.js";
 import { publishProduct, setEditingProduct, getProductBySlug } from "../../actions/shop.js";
 import { slugify, InjectGlobalStyle} from '../../core/utils.js';
@@ -97,7 +96,7 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
     }
 
     _formIsValid() {
-        return this.querySelector('form').checkValidity();
+        return this.querySelector('form').reportValidity();
     }
 
     _submit(data) {

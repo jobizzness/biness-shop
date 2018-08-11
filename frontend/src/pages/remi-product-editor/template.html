@@ -27,13 +27,22 @@
 
                 <section class="row">
                     <div class="mdc-text-field mdc-text-field--textarea mdc-text-field--fullwidth mdc-text-field--dense">
-                        <textarea id="description" value="{{data.description::change}}" class="mdc-text-field__input" rows="3" cols="40"></textarea>
+                        <textarea 
+                            id="description" 
+                            value="{{data.description::change}}" 
+                            required
+                            class="mdc-text-field__input" rows="3" cols="40"></textarea>
                         <label for="description" class="mdc-floating-label">Product Description</label>
                     </div>
                 </section>
                 <section class="row">
                     <div class="mdc-text-field mdc-text-field--textarea mdc-text-field--fullwidth mdc-text-field--dense">
-                        <textarea id="features" value="{{data.features::change}}" class="mdc-text-field__input" rows="2" cols="40"></textarea>
+                        <textarea id="features" 
+                            required
+                            value="{{data.features::change}}" 
+                            class="mdc-text-field__input" 
+                            rows="2" 
+                            cols="40"></textarea>
                         <label for="features" class="mdc-floating-label">Product Features</label>
                     </div>
                 </section>
