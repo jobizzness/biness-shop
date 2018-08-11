@@ -21,7 +21,7 @@ import { fetchUser } from '../../actions/auth.js'
 import './style.css';
 import template from './template.html';
 import { lightComponent } from '../lightComponent.js';
-
+import { InjectGlobalStyle } from '../../core/utils.js'
 
 BinessShop.alert = swal;
 
@@ -30,8 +30,8 @@ window.customElements.define('biness-shop', class extends connect(store)(lightCo
   static get template() {
 
     return html([
-          template
-       ])
+      template
+    ])
   }
 
 static get properties() {
@@ -74,6 +74,7 @@ static get properties() {
     store.dispatch(fetchUser())
 
     await import('../lazy-components.js');
+    InjectGlobalStyle({ name: 'linear-progress' }, () => import('../../components/material/linear-progress.html'));
 
   }
 

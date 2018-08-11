@@ -2,7 +2,18 @@
 <!-- Header -->
 
 <app-header condenses reveals effects="waterfall">
-  <paper-progress indeterminate hidden$="[[!loading]]"></paper-progress>
+  
+  <div role="progressbar" id="progress" class="mdc-linear-progress mdc-linear-progress--indeterminate" hidden$="[[!loading]]">
+    <div class="mdc-linear-progress__buffering-dots"></div>
+    <div class="mdc-linear-progress__buffer"></div>
+    <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+      <span class="mdc-linear-progress__bar-inner"></span>
+    </div>
+    <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+      <span class="mdc-linear-progress__bar-inner"></span>
+    </div>
+  </div>
+
   <app-toolbar class="toolbar-top" sticky>
     <button class="icon-button"
       id="menu-btn"
@@ -53,7 +64,7 @@
         <iron-icon icon="bn-icons:cart"></iron-icon>
         <span>Store</span>
       </a>
-      <a selected$="[[is_selected(_page, 'view3')]]" href="/orders">
+      <a selected$="[[is_selected(page, 'orders')]]" href="/orders">
         <iron-icon icon="bn-icons:orders"></iron-icon>
         <span>Orders</span>
       </a>

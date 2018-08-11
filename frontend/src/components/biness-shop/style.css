@@ -71,6 +71,10 @@ biness-shop {
         color: white;
     }
 
+    #progress{
+        --mdc-theme-primary: #7a708d;
+    }
+
     .toolbar-list {
         display: none;
         padding-bottom: 16px;
