@@ -81,7 +81,7 @@ class RemiProduct extends connect(store)(PageViewElement) {
 
     _dataChanged(data){
         if(data){
-            store.dispatch(productWasViewed(data))
+            //store.dispatch(productWasViewed(data))
         }
     }
 

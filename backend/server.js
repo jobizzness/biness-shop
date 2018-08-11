@@ -17,7 +17,10 @@
 |     Make sure to pass relative path from the project root.
 */
 
+require('@google-cloud/trace-agent').start();
+
 const { Ignitor } = require('@adonisjs/ignitor')
+
 
 new Ignitor(require('@adonisjs/fold'))
   .appRoot(__dirname)

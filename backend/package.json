@@ -25,11 +25,15 @@
     "@adonisjs/ignitor": "^2.0.6",
     "@adonisjs/lucid": "^5.0.4",
     "@adonisjs/validator": "^5.0.3",
+    "@google-cloud/trace-agent": "^3.1.0",
     "adonis-mongorito": "0.0.2",
     "lucid-mongo": "^3.1.0"
   },
   "devDependencies": {},
   "autoload": {
     "App": "./app"
+  },
+  "engines": {
+    "node": "9.x"
   }
 }
