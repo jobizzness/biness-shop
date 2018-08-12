@@ -39,16 +39,13 @@ export const getProductsInCategory = (category) => async (dispatch) => {
   
 }
 
-export const publishProduct = (data) => async (dispatch) => {
-  
-  //Set loading to true
-  dispatch(setUpdating(true))
+export const publishProduct = (data, callback) => async (dispatch) => {
 
   try {
-    await Shop.publishProduct(data);
-    dispatch(setUpdating(false))
+    let response = await Shop.publishProduct(data);
+    if(callback) callback(response)
   } catch (error) {
-    dispatch(setUpdating(false))
+    if (callback) callback(null, error)
   }
   
 }

@@ -11,6 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import '@polymer/iron-image';
 import '@polymer/iron-icon';
+import '@vaadin/vaadin-upload/vaadin-upload.js';
 import { Media } from "../core/media.js";
 
 class MediaUploader extends PolymerElement {
@@ -19,6 +20,10 @@ class MediaUploader extends PolymerElement {
     image:{
       type: String,
       reflectToAttribute: true,
+      notify: true
+    },
+    images:{
+      type: Array,
       notify: true
     }
   }}
@@ -88,34 +93,40 @@ class MediaUploader extends PolymerElement {
           </div>
       </div>
       <div class="list">
-
+        <template is="dom-repeat" items="[[images]]">
+          <div>
+          
+          </div>
+        </template>
       </div>
+      <vaadin-upload 
+        id="vaadin"
+        target="[[target]]" 
+        method="POST" 
+        timeout="300000" 
+        headers="[[headers]]" 
+        form-data-name="file"></vaadin-upload>
     </div>
     `;
   }
 
+  get target(){
+    return Media.getTarget()
+  }
+
+  get headers(){
+    return Media.getHeaders()
+  }
   /**
     * @desc opens a modal window to display a message
     * @param string msg - the message to be displayed
     * @return bool - success or failure
     */
   _fileChanged(e){
-    
-    const file = e.target.files[0];
-    console.log('before upload');
-    
-    if(file)
-        this._makeUpload(file);
+    this.$.vaadin._addFile(e.target.files[0])
   }
 
   _makeUpload(file){
-    let uploader = Media.upload(file, 'products');
-    let progress, error;
-
-    uploader.on('state_changed',
-      progress = snapshot => this._progressChanged(snapshot),
-      error = err => this._onError(err)
-    )
 
     uploader.then(this._onComplete.bind(this))
   }
@@ -125,8 +136,8 @@ class MediaUploader extends PolymerElement {
     this.progress = percentage;
   }
 
- async _onComplete(snapshot){
-    this.image = await snapshot.ref.getDownloadURL();
+  _onComplete(){
+
   }
 
   _onError(err){

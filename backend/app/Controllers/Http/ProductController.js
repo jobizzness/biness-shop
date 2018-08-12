@@ -1,7 +1,9 @@
 'use strict'
 
+const { validateAll } = use('Validator')
 const ApiController = use('App/Controllers/ApiController')
 const GetProductListingCommand = use('App/Commands/GetProductListingCommand')
+const CreateProductCommand = use('App/Commands/CreateProductCommand')
 const ProductTransformer = use('App/Transformers/ProductTransformer')
 
 class ProductController extends ApiController{
@@ -22,7 +24,30 @@ class ProductController extends ApiController{
     }
 
     show() { }
-    store() { }
+
+    async store({ request, response, auth }) {
+        this.response = response
+        let data = request.all()
+        //validate the data
+
+        const rules = {
+            email: 'required',
+            password: 'required'
+        }
+
+        // const validation = await validateAll(data, rules)
+        // if (validation.fails()) return this.validationFails(validation)
+
+        try {
+            let product = await(new CreateProductCommand(data))
+            return this.respond({
+                data: product
+            })
+        } catch (error) {
+            
+        }
+        
+    }
     update() { }
     destroy() { }
 }

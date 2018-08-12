@@ -1,20 +1,22 @@
-import storage from "firebase/storage";
-import { firebase } from '../core/app.js';
+import { BinessShop} from './app.js'
 
 export const Media = new class {
     constructor() {
-        console.log()
-        this._progressListeners = [];
-        this._completeListeners = [];
     }
 
-    upload(file, folder, filename){
-        const ref = firebase().storage().ref(
-            `media/${folder}/${filename ? filename : file.name}`
-        )
-        const metadata = { contentType: file.type };
+    getHeaders(){
+        let r = new BinessShop.Request()
+        let headers = r.options.headers
+        headers.Authorization = `Bearer ${r.token}`
+        return headers;
+    }
 
-        return ref.put(file, metadata)
+    getTarget(){
+        return BinessShop.API_URL + '/media'
+    }
+
+    delete(){
+        
     }
 
 }();

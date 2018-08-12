@@ -100,7 +100,6 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
     }
 
     _submit(data) {
-        console.log('submiting this form now');
         store.dispatch(publishProduct(data))
     }
 

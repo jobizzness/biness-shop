@@ -8,12 +8,10 @@ import '@polymer/app-layout/app-header/app-header.js';
 import '@polymer/app-layout/app-scroll-effects/effects/waterfall.js';
 import '@polymer/app-layout/app-toolbar/app-toolbar.js';
 import { setPassiveTouchGestures } from '@polymer/polymer/lib/utils/settings.js';
-import swal from 'sweetalert';
 
 import { connect } from 'pwa-helpers/connect-mixin.js';
 import { installRouter } from 'pwa-helpers/router.js';
 import { updateMetadata } from 'pwa-helpers/metadata.js';
-
 
 import { store } from '../../store.js';
 import { navigate } from '../../actions/app.js';
@@ -23,6 +21,7 @@ import template from './template.html';
 import { lightComponent } from '../lightComponent.js';
 import { InjectGlobalStyle } from '../../core/utils.js'
 
+import swal from 'sweetalert';
 BinessShop.alert = swal;
 
 window.customElements.define('biness-shop', class extends connect(store)(lightComponent) {

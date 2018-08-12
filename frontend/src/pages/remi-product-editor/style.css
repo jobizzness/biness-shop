@@ -36,4 +36,10 @@
         .card-a {
             margin-top: 5em;
         }
+
+        #large-btn{
+            width: 100%;
+            color: #ffffff;
+            background-color:var(--app-primary-color);
+        }
 }

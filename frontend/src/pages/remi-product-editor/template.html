@@ -2,7 +2,7 @@
 <div class="content">
     <header class="layout horizontal">
         <span class="flex"></span>
-        <button class="mdc-button accent-btn" on-click="submit">
+        <button class="mdc-button" on-click="submit">
             <iron-icon icon="bn-icons:tick"></iron-icon>
         </button>
     </header>
@@ -104,7 +104,6 @@
                     </div> -->
                 </section>
                 <section class="row">
-                    <input type="hidden" value="{{data.views::change}}" min="0">
                     <!-- Should user buy when no stock? -->
                     <div class="layout horizontal center">
                         <mwc-checkbox checked></mwc-checkbox> Allow orders when there is no stock?
@@ -116,7 +115,7 @@
                     </div>
                 </section>
                 <section class="row actions">
-                    <button class="mdc-button mdc-button--outlined accent-btn" id="mybtn" on-click="submit">
+                    <button class="mdc-button" id="large-btn" on-click="submit">
                         Publish
                     </button>
                 </section>
