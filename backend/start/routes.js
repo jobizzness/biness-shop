@@ -38,3 +38,4 @@ Route
     [['store', 'update', 'destroy'], ['auth']]
   ]))
 
+Route.post('/media', 'MediaController.store').middleware('auth')

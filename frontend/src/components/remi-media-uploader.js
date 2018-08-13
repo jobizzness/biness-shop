@@ -20,11 +20,13 @@ class MediaUploader extends PolymerElement {
     image:{
       type: String,
       reflectToAttribute: true,
-      notify: true
+      notify: true,
+      computed: '_computeImage(images.*)'
     },
     images:{
       type: Array,
-      notify: true
+      notify: true,
+      value: []
     }
   }}
 
@@ -79,7 +81,7 @@ class MediaUploader extends PolymerElement {
     <div class="inner">
       <div class="main">
           <div>
-              <input type="file" on-change="_fileChanged">
+              <input type="file" on-change="onAddFile">
               <div class="placeholder" hidden="[[image]]">
                   <iron-icon src="/assets/icons/media.svg"></iron-icon>
               </div>
@@ -103,7 +105,9 @@ class MediaUploader extends PolymerElement {
         id="vaadin"
         target="[[target]]" 
         method="POST" 
+        accept="image/*"
         timeout="300000" 
+        on-upload-success="_onComplete"
         headers="[[headers]]" 
         form-data-name="file"></vaadin-upload>
     </div>
@@ -117,27 +121,24 @@ class MediaUploader extends PolymerElement {
   get headers(){
     return Media.getHeaders()
   }
+
+  _computeImage(images){
+    let p = this.images[0]
+    return p ? p : null
+  }
   /**
     * @desc opens a modal window to display a message
     * @param string msg - the message to be displayed
     * @return bool - success or failure
     */
-  _fileChanged(e){
+  onAddFile(e){
     this.$.vaadin._addFile(e.target.files[0])
   }
 
-  _makeUpload(file){
 
-    uploader.then(this._onComplete.bind(this))
-  }
 
-  _progressChanged(snapshot){
-    let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    this.progress = percentage;
-  }
-
-  _onComplete(){
-
+  _onComplete(e){
+    this.push('images', (JSON.parse(e.detail.xhr.response)).data.url);
   }
 
   _onError(err){

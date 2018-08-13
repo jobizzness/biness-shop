@@ -8,6 +8,7 @@ export const Media = new class {
         let r = new BinessShop.Request()
         let headers = r.options.headers
         headers.Authorization = `Bearer ${r.token}`
+        delete headers['Content-Type']
         return headers;
     }
 
