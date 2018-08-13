@@ -40,9 +40,14 @@ class ProductController extends ApiController{
     }
 
     async store({ request, response, auth }) {
+        
         this.response = response
         let data = request.all()
         //validate the data
+
+        if(data._id){
+            return await this.update({request, response, auth})
+        }
 
         const rules = {
             email: 'required',
@@ -58,11 +63,35 @@ class ProductController extends ApiController{
                 data: product
             })
         } catch (error) {
-            
+            this.respondWithError(error)
         }
         
     }
-    update() { }
+    async update({ request, response, auth }) { 
+        this.response = response
+        let data = request.all()
+
+        if (!data._id) {
+            return await this.store({ request, response, auth })
+        }
+
+        const rules = {
+            email: 'required',
+            password: 'required'
+        }
+
+        // const validation = await validateAll(data, rules)
+        // if (validation.fails()) return this.validationFails(validation)
+
+        try {
+            const product = await Product.findOrFail(data._id)
+            product.merge(this.data)
+            await product.save()
+            return this.respond(true)
+        } catch (error) {
+            return this.respondWithError(error)
+        }
+    }
     destroy() { }
 }
 
