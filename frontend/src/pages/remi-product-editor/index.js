@@ -20,7 +20,7 @@ import './style.css'
 import '../../components/remi-media-uploader.js';
 
 import { shop } from "../../reducers/shop.js";
-import { publishProduct, setEditingProduct, getProductBySlug } from "../../actions/shop.js";
+import { publishProduct, setEditingProduct, getProduct } from "../../actions/shop.js";
 import { slugify, InjectGlobalStyle} from '../../core/utils.js';
 
 store.addReducers({
@@ -63,7 +63,7 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
 
     _checkShouldFetchData(_page, _slug) {
         if (this.data.name == null && _page === 'product-edit' && (_slug != null && _slug != 'create')) {
-            store.dispatch(getProductBySlug(_slug, product => store.dispatch(setEditingProduct(product))))
+            store.dispatch(getProduct(_slug, product => store.dispatch(setEditingProduct(product))))
         }
     }
 
@@ -99,7 +99,26 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
     }
 
     _submit(data) {
-        store.dispatch(publishProduct(data))
+        store.dispatch(publishProduct(data, (success, err) => {
+
+            if(err){
+                let detail = {
+                    type: 'error',
+                    message: 'there was an error, please try again'
+                }
+                this.dispatchEvent(new CustomEvent('alert', { bubbles: true, detail: detail }))
+                return;
+            }
+
+            if (success) {
+                let detail = {
+                    type: 'success',
+                    message: 'Product was successfully saved'
+                }
+                this.dispatchEvent(new CustomEvent('alert', { bubbles: true, detail: detail }))
+            }
+            
+        }))
     }
 
     /**

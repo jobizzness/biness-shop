@@ -184,6 +184,10 @@ biness-shop {
     #pages>*{
         visibility: hidden;
     }
+
+    vaadin-notification{
+        padding:0;
+    }
 }
 
     

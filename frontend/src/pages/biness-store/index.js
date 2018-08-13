@@ -100,7 +100,7 @@ class BinessStore extends connect(store)(PageViewElement) {
     }
 
     _openFilter(e) {
-        BinessShop.element.dispatchEvent(new CustomEvent('toggle-filter', { bubbles: false, detail: {} }))
+        this.dispatchEvent(new CustomEvent('biness:toggle-filter', { bubbles: true, detail: {} }))
     }
 
     _slugChanged(slug) {

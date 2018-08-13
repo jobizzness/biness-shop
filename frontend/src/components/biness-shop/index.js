@@ -49,16 +49,28 @@ static get properties() {
       type: Boolean,
       reflectToAttribute: true,
       computed: '_computeHideNav(page)'
+    },
+    alerts: {
+      type: Array
     }
   }
 }
   
   static get observers(){
     return [
-      '_cartChanged(cart)'
+      '_cartChanged(cart)',
+      '_alertsChanged(alerts.*)'
     ]
   }
 
+  get alertTitles(){
+    return {
+      success: 'Awesome!',
+      info: 'Heads up!',
+      warn: 'Warning',
+      error: 'Oh snap'
+    }
+  }
   constructor() {
     super();
     // To force all event listeners for gestures to be passive.
@@ -77,6 +89,41 @@ static get properties() {
 
   }
 
+  alert(data){
+      const notify = document.createElement('vaadin-notification')
+      const template = document.createElement('template');
+      template.innerHTML = `
+        <style>
+          .error{
+            color: #e72545;
+          }
+          .success{
+            color: #38bca0;
+          }
+          .warn{
+            color: #f5b225;
+          }
+          .info{
+            color: #40a4f1;
+          }
+        </style>
+        <div class="${data.type} notification">
+          <b><span>${this.alertTitles[data.type]} !</span></b> ${data.message}
+        </div>
+      `;
+
+      notify.data = data
+      notify.position = 'top-end'
+      notify.appendChild(template)
+
+      document.body.appendChild(notify);
+      notify.opened = true;
+      notify.addEventListener('opened-changed', function () {
+        document.body.removeChild(notify);
+      });
+    
+  }
+
 
   _cartChanged(cart){
     //console.log(cart);
@@ -90,6 +137,7 @@ static get properties() {
     //   (matches) => store.dispatch(updateLayout(matches)));
 
     this.addEventListener('toggle-filter', (e) => this.$.shopFilter.open());
+    this.addEventListener('alert', (e) => this.alert(e.detail))
   }
 
 
@@ -151,12 +199,12 @@ static get properties() {
   // }
 
   _stateChanged(state) {
-    this.page = state.app.route.page;
-    this._offline = state.app.offline;
-    this._snackbarOpened = state.app.snackbarOpened;
-    this._user = state.app.user;
-    this.loading = state.app.loading;
-    this.cartItemsCount = state.shop && state.shop.cart.numItems;
+    this.page = state.app.route.page
+    this._offline = state.app.offline
+    this._snackbarOpened = state.app.snackbarOpened
+    this._user = state.app.user
+    this.loading = state.app.loading
+    this.cartItemsCount = state.shop && state.shop.cart.numItems
   }
 
   _userIsAdmin(user) {
