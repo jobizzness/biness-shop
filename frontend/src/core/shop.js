@@ -32,3 +32,18 @@ export const publishProduct = async (product) => {
         }
     })
 }
+
+
+export const getProduct = async (slug) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            let response = await (new Request()).get(`${API_URL}/product/${slug}`, {})
+            let data = await response.json()
+            if (data.error) reject(data)
+            resolve(data);
+        } catch (error) {
+            reject(error);
+        }
+    })
+}

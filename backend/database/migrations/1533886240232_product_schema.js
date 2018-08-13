@@ -6,6 +6,7 @@ class ProductSchema extends Schema {
   up () {
     this.create('products', (table) => {
       table.index('_id', { _id: 1 })
+      table.index('slug', { _id: 1 })
       table.timestamps()
     })
   }

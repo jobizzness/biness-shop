@@ -5,6 +5,7 @@ const ApiController = use('App/Controllers/ApiController')
 const GetProductListingCommand = use('App/Commands/GetProductListingCommand')
 const CreateProductCommand = use('App/Commands/CreateProductCommand')
 const ProductTransformer = use('App/Transformers/ProductTransformer')
+const Product = use('App/Models/Product')
 
 class ProductController extends ApiController{
 
@@ -23,7 +24,20 @@ class ProductController extends ApiController{
 
     }
 
-    show() { }
+    async show({ request, response, params, auth }) {
+
+        this.response = response
+        const slug = params.id
+        const results = await Product.where('slug').eq(slug).fetch()
+        const product = results.first()
+        
+        if (!product){
+            return this.respondNotFound()
+        }
+
+        return this.respond(this.transformer.transform(product))
+
+    }
 
     async store({ request, response, auth }) {
         this.response = response

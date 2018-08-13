@@ -25,7 +25,7 @@ import '../../components/quantity-input.js';
 
 import { store } from '../../store.js'
 import { shop } from "../../reducers/shop.js";
-import { getProductBySlug, setActiveProduct, productWasViewed, setEditingProduct } from "../../actions/shop.js";
+import { getProduct, setActiveProduct, productWasViewed, setEditingProduct } from "../../actions/shop.js";
 import { addToCart} from '../../actions/cart.js';
 
 import { fadeIn, fadeOut } from '../../components/animation.js';
@@ -90,7 +90,7 @@ class RemiProduct extends connect(store)(PageViewElement) {
 
     _checkShouldFetchData(_page, _slug){
         if(this.data == null && _page === 'product' && _slug != null){
-            store.dispatch(getProductBySlug(_slug, 
+            store.dispatch(getProduct(_slug, 
                 product => store.dispatch(setActiveProduct(product)))
             )
         }

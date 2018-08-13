@@ -69,9 +69,9 @@ export const setEditingProduct = (editingProduct) => {
   }
 }
 
-export const getProductBySlug = (slug, callback) => async (dispatch) => {
+export const getProduct = (slug, callback) => async (dispatch) => {
 
-  const product = await Shop.getProductBySlug(slug);
+  const product = await Shop.getProduct(slug);
   callback(product);
 }
 
