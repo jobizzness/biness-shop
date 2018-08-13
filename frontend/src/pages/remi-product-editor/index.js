@@ -44,7 +44,6 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
         return {
             data: {
                 type: Object,
-                value: {}
             }
         }
     }

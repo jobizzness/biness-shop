@@ -12,11 +12,27 @@
     </template>
     <div class="content layout horizontal main-section" hidden="[[!data]]">
         <div class="product-media">
-            <iron-image 
-                sizing="cover"
-                preload 
-                fade 
-                src="[[data.image]]"></iron-image>
+            <!-- Slider main container -->
+            <div class="swiper-container">
+                <!-- Additional required wrapper -->
+                <ul class="swiper-wrapper" id="swipe">
+                    <template is="dom-repeat" items="[[data.images]]" as="item">
+                        <li class="swiper-slide">
+                            <img class="product-image" src="[[item.url]]">
+                        </li>
+                    </template>
+                </ul>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+            
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            
+                <!-- If we need scrollbar -->
+                <!-- <div class="swiper-scrollbar"></div> -->
+            </div>
+            
         </div>
         <div class="detail layout vertical flex">
             <h1 class="mdc-typography--headline4">[[data.name]]</h1>

@@ -97,7 +97,11 @@ class MediaUploader extends PolymerElement {
       <div class="list">
         <template is="dom-repeat" items="[[images]]">
           <div>
-          
+            <iron-image 
+                style="width:100%; height:100%; background-color: lightgray;"
+                sizing="cover"
+                preload 
+                src="[[item]]"></iron-image>
           </div>
         </template>
       </div>
@@ -121,11 +125,12 @@ class MediaUploader extends PolymerElement {
   get headers(){
     return Media.getHeaders()
   }
-
-  _computeImage(images){
-    let p = this.images[0]
-    return p ? p : null
+  
+  _computeImage(image){
+    let p = this.images && this.images[0]
+    return p ? p.url : null
   }
+
   /**
     * @desc opens a modal window to display a message
     * @param string msg - the message to be displayed
@@ -135,10 +140,14 @@ class MediaUploader extends PolymerElement {
     this.$.vaadin._addFile(e.target.files[0])
   }
 
-
-
   _onComplete(e){
-    this.push('images', (JSON.parse(e.detail.xhr.response)).data.url);
+    this.push('images', {
+      url: (JSON.parse(e.detail.xhr.response)).data.url
+    })
+  }
+
+  _onDelete(){
+
   }
 
   _onError(err){

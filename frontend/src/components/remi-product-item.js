@@ -121,7 +121,7 @@ class RemiProductItem extends LitElement {
                 <iron-image 
                     style="background-color: lightgray;" 
                     sizing="cover" preload fade 
-                    src$="${props.data.image}">
+                    src$="${this._getImage(props.data)}">
                 </iron-image>
             </div>
             <footer>
@@ -177,6 +177,18 @@ class RemiProductItem extends LitElement {
                 value: {}
             }
         }
+    }
+
+    _getImage(data){
+        if (data.images && data.images.length > 0){
+            return data.images[0].url
+        }
+        
+        if(data.image){
+            return data.image
+        }
+
+        
     }
 
     constructor() {

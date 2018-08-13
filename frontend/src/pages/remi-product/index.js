@@ -7,20 +7,23 @@
     Code distributed by Google as part of the polymer project is also
     subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import { MDCRipple } from '@material/ripple';
-import '@polymer/iron-image';
-import { connect } from 'pwa-helpers/connect-mixin.js';
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { html } from '@polymer/polymer/polymer-element.js'
+import { MDCRipple } from '@material/ripple'
+import '@polymer/iron-image'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { PageViewElement } from '../../components/page-view-element.js'
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js"
 
-import { store } from '../../store.js';
+
 import template from './template.html'
-import { PageViewElement } from '../../components/page-view-element.js';
-import SharedStyles  from '../../components/shared-styles.html';
-import buttonStyles from "../../components/material/button.html";
+import Swiper from 'swiper'
+import 'swiper/dist/css/swiper.css'
+import './style.css'
+import 'iron-swiper-3/iron-swiper.js';
 import '../../components/remi-color-swatch-input.js';
 import '../../components/quantity-input.js';
 
+import { store } from '../../store.js'
 import { shop } from "../../reducers/shop.js";
 import { getProductBySlug, setActiveProduct, productWasViewed, setEditingProduct } from "../../actions/shop.js";
 import { addToCart} from '../../actions/cart.js';
@@ -32,7 +35,8 @@ store.addReducers({
     shop
 });
 
-InjectGlobalStyle({ name: 'remi-product' }, () => import('./style.html'));
+let swiper = null;
+
 InjectGlobalStyle({ name: 'material-button' }, () => import('../../components/material/button.html'));
 /**
  * `ts-home` Description
@@ -71,6 +75,19 @@ class RemiProduct extends connect(store)(PageViewElement) {
         }
     }
 
+    _getImage(data){
+        if(!data) return;
+        
+        if (data.images && data.images.length > 0){
+            return data.images[0].url
+        }
+        
+        if(data.image){
+            return data.image
+        }
+
+    }
+
     _checkShouldFetchData(_page, _slug){
         if(this.data == null && _page === 'product' && _slug != null){
             store.dispatch(getProductBySlug(_slug, 
@@ -81,7 +98,10 @@ class RemiProduct extends connect(store)(PageViewElement) {
 
     _dataChanged(data){
         if(data){
-            //store.dispatch(productWasViewed(data))
+            afterNextRender(this, () => {
+                this.initSlider()
+            })
+            
         }
     }
 
@@ -158,9 +178,32 @@ class RemiProduct extends connect(store)(PageViewElement) {
         const buttonRipple = new MDCRipple(this.querySelector('.mdc-button'));
         this.dialog = document.getElementById('cart-modal');
 
-        afterNextRender(this, () => {
-        })
         
+        
+    }
+
+    initSlider(){
+         swiper = new Swiper('.swiper-container', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            // scrollbar: {
+            //     el: '.swiper-scrollbar',
+            // },
+        })
     }
 
     _stateChanged(state) {

@@ -22,7 +22,8 @@ import { ADD_TO_CART, SET_CART } from "../actions/cart.js";
 import { cart, INITIAL_CART} from './cart.js';
 
 const INITIAL_PRODUCT = {
-  views: 0
+  views: 0,
+  images: []
 }
 
 const INITIAL_STATE = {
