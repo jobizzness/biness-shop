@@ -133,7 +133,7 @@ class BnProgressButton extends LitElement {
                 }
 
         </style>
-        <button class="mdc-button" id="button" disabled$="${props.loading}">
+        <button class="mdc-button" id="button" disabled="${props.loading}">
             <slot hidden="${props.loading}"></slot>
             <div class="spinner" hidden="${!props.loading}">
                 <svg class="spinner" width="35px" height="30px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">

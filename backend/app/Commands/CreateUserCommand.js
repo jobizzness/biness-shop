@@ -20,7 +20,13 @@ class CreateUserCommand extends Command{
             birthday: null,
             purchases: null,
             addresses: [],
-            cart: {},
+            currency: 'USD',
+            cart: {
+                items: [],
+                total: 0,
+                currency: 'USD',
+                numitems: 0
+            },
             roles: {
                 admin: false,
                 customer: true

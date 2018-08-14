@@ -204,7 +204,7 @@ static get properties() {
     this._snackbarOpened = state.app.snackbarOpened
     this._user = state.app.user
     this.loading = state.app.loading
-    this.cartItemsCount = state.shop && state.shop.cart.numItems
+    this.cartItemsCount = state.shop && state.shop.cart.numitems
   }
 
   _userIsAdmin(user) {

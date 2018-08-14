@@ -32,7 +32,7 @@ class BnProgressButton extends LitElement {
                 display:none
             }
         </style>
-        <button class="mdc-button" id="button" disabled$="${props.loading}">
+        <button class="mdc-button" id="button" disabled="${props.loading}">
             <slot></slot>
         </button>
         <div role="progressbar" id="progress" hidden="${!props.loading}" class="mdc-linear-progress mdc-linear-progress--indeterminate">
