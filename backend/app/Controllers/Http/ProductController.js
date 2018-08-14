@@ -60,7 +60,7 @@ class ProductController extends ApiController{
         try {
             let product = await(new CreateProductCommand(data))
             return this.respond({
-                data: product
+                data: this.transformer.transform(product)
             })
         } catch (error) {
             console.log(error)
@@ -88,7 +88,9 @@ class ProductController extends ApiController{
             const product = await Product.findOrFail(data._id)
             product.merge(this.data)
             await product.save()
-            return this.respond(this.transformer.transform(product))
+            return this.respond({
+                    data: this.transformer.transform(product)
+            })
         } catch (error) {
             return this.respondWithError(error)
         }

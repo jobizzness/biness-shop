@@ -119,6 +119,7 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
 
             if (success) {
                 this.loading = false;
+                this.data = success.data
                 let detail = {
                     type: 'success',
                     message: 'Product was successfully saved'
