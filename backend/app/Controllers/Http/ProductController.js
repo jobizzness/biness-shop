@@ -88,7 +88,7 @@ class ProductController extends ApiController{
             const product = await Product.findOrFail(data._id)
             product.merge(this.data)
             await product.save()
-            return this.respond(true)
+            return this.respond(this.transformer.transform(product))
         } catch (error) {
             return this.respondWithError(error)
         }

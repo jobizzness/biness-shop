@@ -1,11 +1,5 @@
 
 <div class="content">
-    <header class="layout horizontal">
-        <span class="flex"></span>
-        <biness-spinning-button id="progressBtn" loading="[[loading]]" on-click="submit">
-            <iron-icon icon="bn-icons:tick"></iron-icon>
-        </biness-spinning-button>
-    </header>
     <section class="layout horizontal">
         <div class="flex">
             <form id="form">
@@ -116,12 +110,23 @@
                 </section>
                 <section class="row actions">
                     <biness-progress-button id="progressBtn" loading="[[loading]]" on-click="submit">
-                        Publish
+                        Save
                     </biness-progress-button>
                 </section>
             </form>
         </div>
         <aside>
+            <header class="layout horizontal">
+                <span class="flex"></span>
+                <a href$="/product/[[data.slug]]" disabled$="[[!data._id]]" target="_blank">
+                    <button class="mdc-button">
+                        <iron-icon icon="bn-icons:eye"></iron-icon> Preview
+                    </button>
+                </a>
+                <biness-spinning-button id="progressBtn" loading="[[loading]]" on-click="submit">
+                    <iron-icon icon="bn-icons:tick"></iron-icon> Save
+                </biness-spinning-button>
+            </header>
             <div class="card-with--shadow pad card-a">
                 <header class="layout horizontal">
                     <span class="flex"></span>

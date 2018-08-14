@@ -243,6 +243,13 @@ biness-shop {
     color: inherit;
     outline: 0;
   }
+  a[disabled]{
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events:none;
+    text-decoration: none;
+  }
   .app-section{
     min-height: 10vh;
   }
