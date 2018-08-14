@@ -63,6 +63,7 @@ class ProductController extends ApiController{
                 data: product
             })
         } catch (error) {
+            console.log(error)
             this.respondWithError(error)
         }
         

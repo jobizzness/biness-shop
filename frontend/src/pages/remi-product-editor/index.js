@@ -14,11 +14,11 @@ import { MDCTextField } from '@material/textfield';
 import {Checkbox} from "@material/mwc-checkbox";
 import { Switch } from "@material/mwc-switch";
 
-import { store } from '../../store.js';
-import template from './template.html';
+import { store } from '../../store.js'
+import template from './template.html'
 import './style.css'
-import '../../components/remi-media-uploader.js';
-
+import '../../components/remi-media-uploader.js'
+import '../../components/biness-progress-button.js'
 import { shop } from "../../reducers/shop.js";
 import { publishProduct, setEditingProduct, getProduct } from "../../actions/shop.js";
 import { slugify, InjectGlobalStyle} from '../../core/utils.js';
@@ -99,6 +99,7 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
     }
 
     _submit(data) {
+        this.loading = true;
         store.dispatch(publishProduct(data, (success, err) => {
 
             if(err){
@@ -106,15 +107,19 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
                     type: 'error',
                     message: 'there was an error, please try again'
                 }
+                this.loading = fasle;
                 this.dispatchEvent(new CustomEvent('alert', { bubbles: true, detail: detail }))
                 return;
             }
 
             if (success) {
+                this.loading = false;
                 let detail = {
                     type: 'success',
                     message: 'Product was successfully saved'
                 }
+                //push to localstorage
+                //redirect back to store
                 this.dispatchEvent(new CustomEvent('alert', { bubbles: true, detail: detail }))
             }
             
@@ -127,6 +132,7 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
     ready() {
         super.ready();
         this.querySelectorAll('.mdc-text-field').forEach((node) => new MDCTextField(node));
+        
     }
 
     _stateChanged(state){
