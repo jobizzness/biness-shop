@@ -2,9 +2,9 @@
 <div class="content">
     <header class="layout horizontal">
         <span class="flex"></span>
-        <button class="mdc-button" on-click="submit">
+        <biness-spinning-button id="progressBtn" loading="[[loading]]" on-click="submit">
             <iron-icon icon="bn-icons:tick"></iron-icon>
-        </button>
+        </biness-spinning-button>
     </header>
     <section class="layout horizontal">
         <div class="flex">
@@ -115,7 +115,9 @@
                     </div>
                 </section>
                 <section class="row actions">
-                    <biness-progress-button id="progressBtn" loading="[[loading]]"></biness-progress-button>
+                    <biness-progress-button id="progressBtn" loading="[[loading]]" on-click="submit">
+                        Publish
+                    </biness-progress-button>
                 </section>
             </form>
         </div>

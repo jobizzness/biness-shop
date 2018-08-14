@@ -19,6 +19,7 @@ import template from './template.html'
 import './style.css'
 import '../../components/remi-media-uploader.js'
 import '../../components/biness-progress-button.js'
+import '../../components/biness-spinning-button.js'
 import { shop } from "../../reducers/shop.js";
 import { publishProduct, setEditingProduct, getProduct } from "../../actions/shop.js";
 import { slugify, InjectGlobalStyle} from '../../core/utils.js';
@@ -99,6 +100,10 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
     }
 
     _submit(data) {
+        if(this.loading){
+            console.info('Already processing, please wait....')
+            return;
+        }
         this.loading = true;
         store.dispatch(publishProduct(data, (success, err) => {
 

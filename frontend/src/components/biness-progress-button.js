@@ -32,8 +32,8 @@ class BnProgressButton extends LitElement {
                 display:none
             }
         </style>
-        <button class="mdc-button" on-click="submit" id="button" disabled$="${props.loading}">
-            Publish
+        <button class="mdc-button" id="button" disabled$="${props.loading}">
+            <slot></slot>
         </button>
         <div role="progressbar" id="progress" hidden="${!props.loading}" class="mdc-linear-progress mdc-linear-progress--indeterminate">
             <div class="mdc-linear-progress__buffering-dots"></div>
