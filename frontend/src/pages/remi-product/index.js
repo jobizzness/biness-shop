@@ -212,6 +212,11 @@ class RemiProduct extends connect(store)(PageViewElement) {
         })
     }
 
+    _swipeTo(e){
+        let index = e.target.index
+        swiper.slideTo(index +1, 250);
+    }
+
     _stateChanged(state) {
         this.data = state.shop.activeProduct;
         this._page = state.app.route.page;

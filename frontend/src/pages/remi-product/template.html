@@ -15,7 +15,7 @@
             <ul class="thumbnails no-carousel">
                 <template is="dom-repeat" items="[[data.images]]" as="item">
                     <li>
-                        <img class="thumbnail-image" src$="[[_thumbnail(item)]]">
+                        <img class="thumbnail-image" src$="[[_thumbnail(item)]]" on-click="_swipeTo" index="[[index]]">
                     </li>
                 </template>
                 
