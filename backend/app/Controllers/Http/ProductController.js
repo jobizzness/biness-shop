@@ -31,6 +31,7 @@ class ProductController extends ApiController{
         const results = await Product.where('slug').eq(slug).fetch()
         const product = results.first()
         
+        
         if (!product){
             return this.respondNotFound()
         }
@@ -68,6 +69,7 @@ class ProductController extends ApiController{
         }
         
     }
+
     async update({ request, response, auth }) { 
         this.response = response
         let data = request.all()
@@ -89,7 +91,7 @@ class ProductController extends ApiController{
             product.merge(this.data)
             await product.save()
             return this.respond({
-                    data: this.transformer.transform(product)
+                data: this.transformer.transform(product)
             })
         } catch (error) {
             return this.respondWithError(error)

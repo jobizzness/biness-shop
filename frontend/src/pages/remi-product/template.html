@@ -13,13 +13,13 @@
     <div class="content layout horizontal main-section" hidden="[[!data]]">
         <div class="product-media layout horizontal">
             <ul class="thumbnails no-carousel">
-                <template is="dom-repeat" items="[[data.images]]" as="item">
-                    <li>
-                        <img class="thumbnail-image" src$="[[_thumbnail(item)]]" on-click="_swipeTo" index="[[index]]">
-                    </li>
-                </template>
-                
-                
+                <dom-repeat items="[[data.images]]" as="item" on-dom-change="initSlider" notify-dom-change="true">
+                    <template>
+                        <li>
+                            <img class="thumbnail-image" src$="[[_thumbnail(item)]]" on-click="_swipeTo" index="[[index]]">
+                        </li>
+                    </template>
+                </dom-repeat>
             </ul>
             <!-- Slider main container -->
             <div class="swiper-container">

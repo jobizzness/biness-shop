@@ -45,6 +45,7 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
         return {
             data: {
                 type: Object,
+                observer: '_dataChanged'
             }
         }
     }
@@ -142,6 +143,7 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
         this.data.variants = this.data.variants || []
         this.push('data.variants', {})
         this.notifyPath('data.variants');
+        this.$.variants.querySelectorAll('.mdc-text-field').forEach((node) => new MDCTextField(node));
     }
 
     /**
@@ -149,8 +151,12 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
      */
     ready() {
         super.ready();
-        this.querySelectorAll('.mdc-text-field').forEach((node) => new MDCTextField(node));
         
+        
+    }
+
+    _dataChanged(e){
+        this.querySelectorAll('.mdc-text-field').forEach((node) => new MDCTextField(node));
     }
 
     _stateChanged(state){

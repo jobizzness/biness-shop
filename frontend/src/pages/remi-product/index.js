@@ -69,8 +69,7 @@ class RemiProduct extends connect(store)(PageViewElement) {
     static get properties() {
         return {
             data:{
-                type: Object,
-                observer: '_dataChanged'
+                type: Object
             }
         }
     }
@@ -99,15 +98,6 @@ class RemiProduct extends connect(store)(PageViewElement) {
     _formatPrice(price) {
         price = parseFloat(price)
         return price ? '$' + price.toFixed(2) : '';
-    }
-
-    _dataChanged(data){
-        if(data){
-            afterNextRender(this, () => {
-                this.initSlider()
-            })
-            
-        }
     }
 
     hide() {
@@ -189,26 +179,28 @@ class RemiProduct extends connect(store)(PageViewElement) {
     }
 
     initSlider(){
-         swiper = new Swiper('.swiper-container', {
-            // Optional parameters
-            direction: 'horizontal',
-            loop: true,
+        afterNextRender(this, () =>{
+            swiper = new Swiper('.swiper-container', {
+                // Optional parameters
+                direction: 'horizontal',
+                loop: true,
 
-            // If we need pagination
-            // pagination: {
-            //     el: '.swiper-pagination',
-            // },
+                // If we need pagination
+                // pagination: {
+                //     el: '.swiper-pagination',
+                // },
 
-            // Navigation arrows
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
 
-            // And if we need scrollbar
-            // scrollbar: {
-            //     el: '.swiper-scrollbar',
-            // },
+                // And if we need scrollbar
+                // scrollbar: {
+                //     el: '.swiper-scrollbar',
+                // },
+            })
         })
     }
 

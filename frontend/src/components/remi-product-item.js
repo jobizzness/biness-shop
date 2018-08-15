@@ -97,7 +97,7 @@ class RemiProductItem extends LitElement {
             <a href$="${this._formatLink(props.data.slug)}">
             <div class="product-media">
                 <iron-image 
-                    sizing="contain" preload fade 
+                    sizing="contain" preload 
                     src$="${this._getImage(props.data)}">
                 </iron-image>
             </div></a>
