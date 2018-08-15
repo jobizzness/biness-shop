@@ -1,15 +1,15 @@
 
 <section class="page-wrapper">
-    <template is="dom-if" if="[[_userIsAdmin(user)]]">
-        <header class="layout content horizontal center toolbar">
-            <span class="flex"></span>
-            <!-- <a href="/product-edit/[[data.slug]]" on-click="_edit">
-                <button class="mdc-button accent-btn">
-                    Edit
-                </button>
-            </a> -->
-        </header>
-    </template>
+    
+    <header class="layout content horizontal center toolbar">
+        
+        <a href="/" class="only-small back">
+            <button class="icon-button">
+                <iron-icon icon="bn-icons:arrow-back"></iron-icon>
+            </button>
+        </a>
+        <span class="flex"></span>
+    </header>
     <div class="content layout horizontal main-section" hidden="[[!data]]">
         <div class="product-media layout horizontal">
             <ul class="thumbnails no-carousel">

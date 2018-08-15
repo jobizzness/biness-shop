@@ -198,15 +198,11 @@ biness-shop {
         changes to a wide layout. */
 
 @media (min-width: 460px) {
-    remi-app {
+    biness-shop {
         .toolbar-list {
             display: block;
         }
-
-        .main-content {
-            padding-top: 118px;
-        }
-
+        
         /* The drawer button isn't shown in the wide layout, so we don't
             need to offset the title 
         */
@@ -322,6 +318,16 @@ biness-shop {
       height: 63px;
       border-radius: 0px !important;
     }
+
+    biness-shop[page=product] .main-content{
+        padding-top: 0px;
+    }
+
+    biness-shop[page=product] app-header{
+        transform: translate3d(0px, -80px, 0px) !important;
+    }
+
+    
 }
 
 
