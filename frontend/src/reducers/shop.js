@@ -23,7 +23,8 @@ import { cart, INITIAL_CART} from './cart.js';
 
 const INITIAL_PRODUCT = {
   views: 0,
-  images: []
+  images: [],
+  variants: []
 }
 
 const INITIAL_STATE = {

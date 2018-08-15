@@ -97,6 +97,57 @@
                         <div class="mdc-line-ripple"></div>
                     </div> -->
                 </section>
+
+                <!-- Variants -->
+                <h1>Product Variants</h1>
+                <template is="dom-repeat" items="[[data.variants]]" as="item">
+                    <section class="row">
+                        <div class="mdc-text-field text-field mdc-text-field--dense mdc-text-field--box mdc-text-field--with-leading-icon">
+                            <iron-icon class="mdc-text-field__icon" icon="bn-icons:email"></iron-icon>
+                            <input 
+                                id="stock" 
+                                name="stock" 
+                                type="stock"
+                                required
+                                value="{{data.stock::change}}" 
+                                class="mdc-text-field__input">
+                            <label class="mdc-floating-label" for="stock">(Stock Keeping Unit) SKU</label>
+                            <div class="mdc-line-ripple"></div>
+                        </div>
+                        <div class="mdc-text-field text-field mdc-text-field--dense mdc-text-field--box mdc-text-field--with-leading-icon">
+                            <iron-icon class="mdc-text-field__icon" icon="bn-icons:email"></iron-icon>
+                            <input 
+                                id="title" 
+                                name="title" 
+                                type="title"
+                                required
+                                value="{{data.title::change}}" 
+                                class="mdc-text-field__input">
+                            <label class="mdc-floating-label" for="title">Color</label>
+                            <div class="mdc-line-ripple"></div>
+                        </div>
+                        <div class="mdc-text-field text-field mdc-text-field--dense mdc-text-field--box mdc-text-field--with-leading-icon">
+                            <iron-icon class="mdc-text-field__icon" icon="bn-icons:email"></iron-icon>
+                            <input 
+                                id="title" 
+                                name="title" 
+                                type="title"
+                                required
+                                value="{{data.title::change}}" 
+                                class="mdc-text-field__input">
+                            <label class="mdc-floating-label" for="title">Size</label>
+                            <div class="mdc-line-ripple"></div>
+                        </div>
+                    </section>
+                </template>
+                <section class="row">
+                    <button class="mdc-button" on-click="addVariant">
+                        Add Variant
+                    </button>
+                </section>
+
+                <!-- Add variant -->
+                
                 <section class="row">
                     <!-- Should user buy when no stock? -->
                     <div class="layout horizontal center">

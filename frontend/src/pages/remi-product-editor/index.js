@@ -137,6 +137,13 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
         }))
     }
 
+    addVariant(e){
+        e.preventDefault()
+        this.data.variants = this.data.variants || []
+        this.push('data.variants', {})
+        this.notifyPath('data.variants');
+    }
+
     /**
      * Use for one-time configuration of your component after local DOM is initialized. 
      */

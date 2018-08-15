@@ -94,7 +94,7 @@ class RemiProductItem extends LitElement {
             
         <div class="wrapper">
             <header></header>
-            <a href$="/product/${props.data.slug}">
+            <a href$="${this._formatLink(props.data.slug)}">
             <div class="product-media">
                 <iron-image 
                     sizing="contain" preload fade 
@@ -103,7 +103,7 @@ class RemiProductItem extends LitElement {
             </div></a>
             <footer>
                 <div class="pad">
-                    <a href$="/product/${props.data.slug}"><h4 class="title">${props.data.name}</h4></a>
+                    <a href$="this._formatLink(props.data.slug)}"><h4 class="title">${props.data.name}</h4></a>
                    ${(props.forAdmin != true) 
                         ?
                         html`
@@ -169,6 +169,14 @@ class RemiProductItem extends LitElement {
     _formatPrice(price){
         price = parseFloat(price)
         return price ? '$' + price.toFixed(2) : '';
+    }
+
+    _formatLink(slug){
+        if(this.forAdmin){
+            return '/product-edit/' + slug
+        }
+
+        return '/product/' + slug
     }
 
     addToCart(e){
