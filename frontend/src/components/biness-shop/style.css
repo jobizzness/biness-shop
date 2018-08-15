@@ -296,6 +296,10 @@ biness-shop {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-tap-highlight-color: transparent;
     box-sizing: border-box !important;
+
+    iron-icon{
+        pointer-events: none
+    }
  }
   .card-with--shadow{
     background-color:white;

@@ -23,6 +23,7 @@ import '../../components/biness-spinning-button.js'
 import { shop } from "../../reducers/shop.js";
 import { publishProduct, setEditingProduct, getProduct } from "../../actions/shop.js";
 import { slugify, InjectGlobalStyle} from '../../core/utils.js';
+import { afterNextRender } from '@polymer/polymer/lib/utils/render-status';
 
 store.addReducers({
     shop
@@ -143,7 +144,17 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
         this.data.variants = this.data.variants || []
         this.push('data.variants', {})
         this.notifyPath('data.variants');
-        this.$.variants.querySelectorAll('.mdc-text-field').forEach((node) => new MDCTextField(node));
+        afterNextRender(this, () => {
+            this.$.variants.querySelectorAll('.mdc-text-field').forEach((node) => new MDCTextField(node));
+        })
+        
+    }
+
+    removeVariant(e){
+        e.preventDefault()
+        const i = e.target.index
+        this.splice('data.variants', i, 1)
+        this.notifyPath('data.variants');
     }
 
     /**

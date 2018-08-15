@@ -102,7 +102,7 @@
                 <h1>Product Variants</h1>
                 <div id="variants">
                     <template is="dom-repeat" items="[[data.variants]]" as="item">
-                        <section class="row">
+                        <section class="layout horizontal row center">
                             <div class="mdc-text-field text-field mdc-text-field--dense mdc-text-field--box mdc-text-field--with-leading-icon">
                                 <iron-icon class="mdc-text-field__icon" icon="bn-icons:email"></iron-icon>
                                 <input 
@@ -139,6 +139,13 @@
                                 <label class="mdc-floating-label" for$="size_[[index]]">Size</label>
                                 <div class="mdc-line-ripple"></div>
                             </div>
+                            <button 
+                                class="icon-button" 
+                                on-click="removeVariant" 
+                                data="[[item]]"
+                                index="[[index]]">
+                                <iron-icon icon="bn-icons:close"></iron-icon>
+                            </button>
                         </section>
                     </template>
                 </div>
