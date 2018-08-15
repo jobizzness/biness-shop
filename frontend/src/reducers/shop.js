@@ -46,6 +46,9 @@ export const shop = (state = INITIAL_STATE, action) => {
         activeProduct: action.activeProduct
       }
     case SET_EDITING_PRODUCT:
+      if (action.editingProduct == null){
+        action.editingProduct = INITIAL_PRODUCT
+      }
       return {
         ...state,
         editingProduct: action.editingProduct

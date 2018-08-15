@@ -11,7 +11,16 @@
         </header>
     </template>
     <div class="content layout horizontal main-section" hidden="[[!data]]">
-        <div class="product-media">
+        <div class="product-media layout horizontal">
+            <ul class="thumbnails no-carousel">
+                <template is="dom-repeat" items="[[data.images]]" as="item">
+                    <li>
+                        <img class="thumbnail-image" src$="[[_thumbnail(item)]]">
+                    </li>
+                </template>
+                
+                
+            </ul>
             <!-- Slider main container -->
             <div class="swiper-container">
                 <!-- Additional required wrapper -->
@@ -23,7 +32,7 @@
                     </template>
                 </ul>
                 <!-- If we need pagination -->
-                <div class="swiper-pagination"></div>
+                <!-- <div class="swiper-pagination"></div> -->
             
                 <!-- If we need navigation buttons -->
                 <div class="swiper-button-prev"></div>
@@ -35,8 +44,8 @@
             
         </div>
         <div class="detail layout vertical flex">
-            <h1 class="mdc-typography--headline4">[[data.name]]</h1>
-            <div class="price mdc-typography--headline6">$[[data.price]]</div>
+            <h1 class="mdc-typography--headline4 product-name">[[data.name]]</h1>
+            <div class="price mdc-typography--headline6">[[_formatPrice(data.price)]]</div>
             <div class="pickers">
                 <!-- Color -->
                 <div class="colors-wrapper">

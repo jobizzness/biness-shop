@@ -50,7 +50,7 @@ export const publishProduct = (data, callback) => async (dispatch) => {
   
 }
 
-export const setActiveProduct = (activeProduct) => {
+export const setActiveProduct = (activeProduct = null) => {
   return {
     type: SET_ACTIVE_PRODUCT,
     activeProduct

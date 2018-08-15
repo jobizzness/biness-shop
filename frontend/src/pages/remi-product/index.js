@@ -96,6 +96,11 @@ class RemiProduct extends connect(store)(PageViewElement) {
         }
     }
 
+    _formatPrice(price) {
+        price = parseFloat(price)
+        return price ? '$' + price.toFixed(2) : '';
+    }
+
     _dataChanged(data){
         if(data){
             afterNextRender(this, () => {
@@ -177,9 +182,10 @@ class RemiProduct extends connect(store)(PageViewElement) {
         super.ready();
         const buttonRipple = new MDCRipple(this.querySelector('.mdc-button'));
         this.dialog = document.getElementById('cart-modal');
+    }
 
-        
-        
+    _thumbnail(image){
+        return image.url
     }
 
     initSlider(){
@@ -189,9 +195,9 @@ class RemiProduct extends connect(store)(PageViewElement) {
             loop: true,
 
             // If we need pagination
-            pagination: {
-                el: '.swiper-pagination',
-            },
+            // pagination: {
+            //     el: '.swiper-pagination',
+            // },
 
             // Navigation arrows
             navigation: {

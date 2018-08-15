@@ -18,9 +18,12 @@
         </header>
         <div class="home-products ">
             <template is="dom-repeat" items="[[bestSellers]]" as="product">
-                <a href$="/product/[[product.slug]]" on-click="_view">
-                    <remi-product-item featured forAdmin$="[[_userIsAdmin(user)]]" data="[[product]]"></remi-product-item>
-                </a>
+                <remi-product-item 
+                    on-click="_view"
+                    featured 
+                    forAdmin$="[[_userIsAdmin(user)]]" 
+                    data="[[product]]"
+                    on-add-to-cart="_addToCart"></remi-product-item>
             </template>
         </div>
     </div>

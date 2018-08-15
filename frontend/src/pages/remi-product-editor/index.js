@@ -58,13 +58,18 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
     static get observers() {
         return [
             '_slugify(title)',
-            '_checkShouldFetchData(_page, _slug)'
+            '_checkShouldFetchData(active, _slug)'
         ]
     }
 
-    _checkShouldFetchData(_page, _slug) {
-        if (this.data.name == null && _page === 'product-edit' && (_slug != null && _slug != 'create')) {
+    _checkShouldFetchData(active, _slug) {
+        if (active && (_slug && _slug != 'create')) {
             store.dispatch(getProduct(_slug, product => store.dispatch(setEditingProduct(product))))
+            return;
+        }
+
+        if(active && _slug === 'create'){
+            store.dispatch(setEditingProduct())
         }
     }
 

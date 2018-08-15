@@ -1,7 +1,7 @@
 
 remi-product{
         visibility: visible !important;
-    
+
     .swiper-container {
       width: 100%;
       height: 100%;
@@ -20,8 +20,39 @@ remi-product{
         margin: 64px 32px;
         width: 600px;
         min-height: 500px;
-    }
 
+        .thumbnails{
+            width: 100px;
+            display: block;
+            padding: 0;
+            margin-right: 18px;
+            list-style: none;
+
+            li{
+                cursor: pointer;
+                img{
+                    width: 100%
+                }
+            }
+            
+        }
+
+        .swiper-button-prev,
+        .swiper-button-next{
+            transition: opacity .6s ease-in-out;
+            opacity: 0;
+        }
+
+        .swiper-container:hover .swiper-button-prev,
+        .swiper-container:hover .swiper-button-next{
+            opacity: 1;
+        }
+    }
+    .product-name{
+        font-size: 1.4rem;
+        color: #4c4c4c;
+        font-weight: 100;
+    }
     .product-media>iron-image {
         width: 100%;
         height: 100%;
@@ -30,6 +61,8 @@ remi-product{
 
     .price {
         font-weight: 600;
+        font-size: 1.3rem;
+        color: #525252;
     }
 
     quantity-input {
@@ -54,7 +87,7 @@ remi-product{
     .color-names>span {
         font-weight: 500;
     }
-
+    
     @media only screen and (max-device-width: 480px) and (min-device-width: 320px) {
         quantity-input {
             max-width: 150px;
@@ -69,6 +102,10 @@ remi-product{
             width: 100%;
             height: 546px;
             margin: 0;
+
+            .thumbnails{
+                display: none;
+            }
         }
         .detail {
             margin-top: 16px;

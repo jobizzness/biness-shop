@@ -3,12 +3,12 @@ remi-home{
     visibility: visible !important;
 
     remi-product-item{
-        height: 550px;
+        height: 862px;
     }
 
     .home-products{
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-gap: 16px;
     }
 
@@ -36,7 +36,7 @@ remi-home{
 @media only screen and (max-device-width: 768px) {
     remi-home{
         remi-product-item{
-            height: 350px;
+            height: 364px;
         }
 
         button.mdc-button{

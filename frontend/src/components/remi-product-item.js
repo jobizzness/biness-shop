@@ -65,12 +65,15 @@ class RemiProductItem extends LitElement {
             button{
                 color: white;
                 border-radius: 25px !important;
-                --mdc-theme-primary: var(--app-secondary-color);
+                --mdc-theme-primary: var(--app-primary-color);
             }
             .stats-item{
                 margin-right: 12px;
                 font-size: 12px;
                 color: #5f5f5f;
+            }
+            a{
+                text-decoration: none;
             }
             .stats-item iron-icon{
                 color: #bdbdbd;
@@ -81,62 +84,34 @@ class RemiProductItem extends LitElement {
                 align-items: center;
                 margin-top: 12px;
             }
-            
-            .icon-button{
-                display: none;
-                border-radius: 50%;
-                outline: 0;
-                border: 0;
-                padding: 8px;
-                outline: none;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-                cursor: pointer;
-                z-index: 0;
-                line-height: 1;
-                color: #ff0057;
-                background-color: inherit;
-                width: 40px;
-                height: 40px;
-                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-                -webkit-tap-highlight-color: transparent;
-                box-sizing: border-box !important;
-            }
 
             @media only screen and (max-device-width: 480px) and (min-device-width: 320px) {
-                button.mdc-button{
-                    display: none;
-                }
-                .icon-button{
-                    display: block;
+                .title{
+                    font-size: .85rem;
                 }
             }
         </style>
             
         <div class="wrapper">
             <header></header>
+            <a href$="/product/${props.data.slug}">
             <div class="product-media">
                 <iron-image 
-                    style="background-color: lightgray;" 
-                    sizing="cover" preload fade 
+                    sizing="contain" preload fade 
                     src$="${this._getImage(props.data)}">
                 </iron-image>
-            </div>
+            </div></a>
             <footer>
                 <div class="pad">
-                    <h4 class="title">${props.data.name}</h4>
+                    <a href$="/product/${props.data.slug}"><h4 class="title">${props.data.name}</h4></a>
                    ${(props.forAdmin != true) 
                         ?
                         html`
                             <div class="flexed">
-                                <span class="price-tag">$60.00</span>
+                                <span class="price-tag">${this._formatPrice(props.data.price)}</span>
                                 <span style="flex:1"></span>
-                                <button class="mdc-button mdc-button--dense mdc-button--outlined"> 
-                                    Add to Cart</button>
-                                <button class="icon-button">
-                                    <iron-icon icon="bn-icons:add-cart"></iron-icon>
+                                <button class="mdc-button mdc-button--dense mdc-button--outlined" on-click="addToCart"> 
+                                    <iron-icon icon="bn-icons:cart"></iron-icon>
                                 </button>
                             </div>` 
                         : 
@@ -189,6 +164,15 @@ class RemiProductItem extends LitElement {
         }
 
         
+    }
+
+    _formatPrice(price){
+        price = parseFloat(price)
+        return price ? '$' + price.toFixed(2) : '';
+    }
+
+    addToCart(e){
+       this.dispatchEvent(new CustomEvent('add-to-cart', {detail: data, bubbles: false}))
     }
 
     constructor() {
