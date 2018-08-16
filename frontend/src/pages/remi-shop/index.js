@@ -20,6 +20,7 @@ import template from './template.html'
 import { store } from '../../store.js'
 
 import { getProductListing, setActiveProduct, getProductsInCategory } from "../../actions/shop.js"
+import { addToCart} from '../../actions/cart.js'
 import { InjectGlobalStyle } from '../../core/utils.js'
 
 import { shop } from "../../reducers/shop.js"
@@ -100,7 +101,7 @@ class RemiShop extends connect(store)(PageViewElement) {
     }
 
     _openFilter(e) {
-        BinessShop.element.dispatchEvent(new CustomEvent('toggle-filter', { bubbles: false, detail: {} }))
+        this.dispatchEvent(new CustomEvent('toggle-filter', { bubbles: true, detail: {} }))
     }
 
     _slugChanged(slug) {
@@ -114,6 +115,31 @@ class RemiShop extends connect(store)(PageViewElement) {
         store.dispatch(setActiveProduct(data));
     }
 
+    _addToCart(e){
+        const data = e.target.data
+        if(!data){
+            return;
+        }
+
+        data.quantity = 1;
+        store.dispatch(addToCart(data, this.user != null, (success, error) => {
+
+            if (error) {
+                let detail = {
+                    type: 'error',
+                    message: 'there was an error, please try again'
+                }
+
+                this.dispatchEvent(new CustomEvent('alert', { bubbles: true, detail: detail }))
+                return;
+            }
+
+            if (success) {
+                
+                this.dispatchEvent(new CustomEvent('added-to-card', { bubbles: true}))
+            }
+        }))
+    }
     connectedCallback() {
         super.connectedCallback();
     }

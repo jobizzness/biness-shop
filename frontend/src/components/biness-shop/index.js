@@ -138,6 +138,7 @@ static get properties() {
 
     this.addEventListener('toggle-filter', (e) => this.$.shopFilter.open());
     this.addEventListener('alert', (e) => this.alert(e.detail))
+    this.addEventListener('added-to-cart', (e) => this.$.cartModal.open())
   }
 
 

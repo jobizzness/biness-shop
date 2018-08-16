@@ -67,6 +67,9 @@ class RemiProductItem extends LitElement {
                 border-radius: 25px !important;
                 --mdc-theme-primary: var(--app-primary-color);
             }
+            button iron-icon{
+                pointer-events: none;
+            }
             .stats-item{
                 margin-right: 12px;
                 font-size: 12px;
@@ -110,7 +113,7 @@ class RemiProductItem extends LitElement {
                             <div class="flexed">
                                 <span class="price-tag">${this._formatPrice(props.data.price)}</span>
                                 <span style="flex:1"></span>
-                                <button class="mdc-button mdc-button--dense mdc-button--outlined" on-click="addToCart"> 
+                                <button class="mdc-button mdc-button--dense mdc-button--outlined" on-click="${(e) => this.addToCart(e)}"> 
                                     <iron-icon icon="bn-icons:cart"></iron-icon>
                                 </button>
                             </div>` 
@@ -180,7 +183,8 @@ class RemiProductItem extends LitElement {
     }
 
     addToCart(e){
-       this.dispatchEvent(new CustomEvent('add-to-cart', {detail: data, bubbles: false}))
+        console.log(e)
+       this.dispatchEvent(new CustomEvent('add-to-cart', {detail: this.data, bubbles: true}))
     }
 
     constructor() {
