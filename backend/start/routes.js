@@ -38,4 +38,9 @@ Route
     [['store', 'update', 'destroy'], ['auth']]
   ]))
 
+Route
+  .resource('cart', 'CartController')
+  .apiOnly()
+  .middleware('auth')
+
 Route.post('/media', 'MediaController.store').middleware('auth')
