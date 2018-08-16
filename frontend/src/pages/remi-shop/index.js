@@ -129,14 +129,11 @@ class RemiShop extends connect(store)(PageViewElement) {
                     type: 'error',
                     message: 'there was an error, please try again'
                 }
-
-                this.dispatchEvent(new CustomEvent('alert', { bubbles: true, detail: detail }))
-                return;
+                return this.dispatchEvent(new CustomEvent('alert', { bubbles: true, detail: detail }))
             }
 
             if (success) {
-                
-                this.dispatchEvent(new CustomEvent('added-to-card', { bubbles: true}))
+                this.dispatchEvent(new CustomEvent('added-to-cart', { bubbles: true}))
             }
         }))
     }

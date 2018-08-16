@@ -5,7 +5,6 @@ import {
 } from '../actions/shop.js';
 
 import { ADD_TO_CART, SET_CART, REMOVE_FROM_CART} from "../actions/cart.js";
-
 export const INITIAL_CART = {
     items: [],
     total: 0,
@@ -42,7 +41,7 @@ const getItems = (state = INITIAL_CART.items, action) => {
                 action.product
             ]
         case REMOVE_FROM_CART:
-            return state.filter(e => e.key !== action.product.key);
+            return state.filter(e => e._id !== action.product._id);
 
         default:
             return state;

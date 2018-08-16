@@ -13,26 +13,26 @@ export const SET_CART = 'SET_CART';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 
-export const addToCart = (product, useRemote, callback) => async (dispatch) => {
+export const addToCart = (product, useRemote, callback) => async (dispatch, getState) => {
 
     //check inventory before we add it?
     if (product.stock < product.quantity) {
         throw new Error('Not enough inventory for this product', this);
     }
 
-    if (useRemote) {
+    dispatch(_addToCart(product))
+    if (callback) callback(true)
 
+    if (useRemote) {
+        let cart = (getState()).shop.cart
         try {
-            await Shop.addToCart(product)
+            await Shop.updateCart(cart)
         } catch (error) {
             if (callback) callback(false, error)
             return;
         }
-        
     }
 
-    dispatch(_addToCart(product))
-    if (callback) callback(true)
 };
 
 
@@ -44,32 +44,30 @@ const _addToCart = (product) => {
     }
 }
 
-export const removeFromCart = (product, useRemote) => (dispatch) => {
+export const removeFromCart = (product, useRemote, callback) => async (dispatch, getState) => {
+
+    dispatch(_removeFromCart(product))
+    if (callback) callback(true)
 
     if (useRemote) {
-        return _removeFromCartRemote(product, dispatch);
+        let cart = (getState()).shop.cart
+        try {
+            await Shop.updateCart(cart)
+        } catch (error) {
+            if (callback) callback(false, error)
+            return;
+        }
     }
-
-    dispatch(_removeFromCart(product));
 };
 
-const _removeFromCartRemote = async (product, dispatch) => {
-    try {
-        const done = await Shop.removeFromCart(product);
-        dispatch(_removeFromCart(product));
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-const _removeFromCart = (product) =>{
+const _removeFromCart = (product) => {
     return {
         type: REMOVE_FROM_CART,
         product
     }
 }
 
-export const setCart = (cart) => async (dispatch) => {
+export const setCart = (cart) => (dispatch) => {
     dispatch({
         type: SET_CART,
         cart

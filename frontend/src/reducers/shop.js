@@ -12,12 +12,11 @@ import {
   SET_ACTIVE_PRODUCT,
   GET_PRODUCTS,
   SET_EDITING_PRODUCT,
-  REMOVE_FROM_CART,
   CHECKOUT_SUCCESS,
   CHECKOUT_FAILURE
 } from '../actions/shop.js';
 
-import { ADD_TO_CART, SET_CART } from "../actions/cart.js";
+import { ADD_TO_CART, SET_CART, REMOVE_FROM_CART } from "../actions/cart.js";
 
 import { cart, INITIAL_CART} from './cart.js';
 
