@@ -19,7 +19,7 @@
         <div class="home-products ">
             <template is="dom-repeat" items="[[bestSellers]]" as="product">
                 <a href$="/product/[[product.slug]]" on-click="_view">
-                    <remi-product-item featured forAdmin$="[[_userIsAdmin(user)]]" data="[[product]]"></remi-product-item>
+                    <remi-product-item featured data="[[product]]"></remi-product-item>
                 </a>
             </template>
         </div>

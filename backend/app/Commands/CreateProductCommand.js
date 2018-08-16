@@ -15,6 +15,9 @@ class CreateProductCommand extends Command {
 
         const product = await Product.create(this.data)
 
+        const data = {
+            variants: []
+        }
         return product
     }
 }

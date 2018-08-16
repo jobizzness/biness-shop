@@ -114,18 +114,18 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
         this.loading = true;
         store.dispatch(publishProduct(data, (success, err) => {
 
+            this.loading = fasle;
             if(err){
                 let detail = {
                     type: 'error',
                     message: 'there was an error, please try again'
                 }
-                this.loading = fasle;
+                
                 this.dispatchEvent(new CustomEvent('alert', { bubbles: true, detail: detail }))
                 return;
             }
 
             if (success) {
-                this.loading = false;
                 this.data = success.data
                 let detail = {
                     type: 'success',
