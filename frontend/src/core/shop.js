@@ -47,3 +47,35 @@ export const getProduct = async (slug) => {
         }
     })
 }
+
+export const addToCart = async (product) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            let response = await (new Request()).post(`${API_URL}/cart-item`, {
+                body: product
+            })
+            let data = await response.json()
+            if (data.error) reject(data)
+            resolve(data);
+        } catch (error) {
+            reject(error);
+        }
+    })
+}
+
+export const removeFromCart = async (product) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+            let response = await (new Request()).delete(`${API_URL}/cart-item`, {
+                body: product
+            })
+            let data = await response.json()
+            if (data.error) reject(data)
+            resolve(data);
+        } catch (error) {
+            reject(error);
+        }
+    })
+}

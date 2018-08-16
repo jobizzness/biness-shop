@@ -84,7 +84,7 @@
                             required
                             value="{{data.stock::change}}" 
                             class="mdc-text-field__input">
-                        <label class="mdc-floating-label" for="stock">(Stock Keeping Unit) SKU</label>
+                        <label class="mdc-floating-label" for="stock">Inventory</label>
                         <div class="mdc-line-ripple"></div>
                     </div>
                     <!-- <div class="mdc-text-field text-field mdc-text-field--dense mdc-text-field--box mdc-text-field--with-leading-icon">
@@ -117,7 +117,7 @@
                                         required
                                         value="{{item.stock::change}}" 
                                         class="mdc-text-field__input">
-                                    <label class="mdc-floating-label" for$="stock_[[index]]">(Stock Keeping Unit) SKU</label>
+                                    <label class="mdc-floating-label" for$="stock_[[index]]">Inventory</label>
                                     <div class="mdc-line-ripple"></div>
                                 </div>
                                 <div class="mdc-text-field text-field mdc-text-field--dense mdc-text-field--box mdc-text-field--with-leading-icon">
@@ -126,7 +126,6 @@
                                         id$="color_[[index]]" 
                                         name$="color_[[index]]" 
                                         type="text"
-                                        required
                                         value="{{item.color::change}}" 
                                         class="mdc-text-field__input">
                                     <label class="mdc-floating-label" for$="color_[[index]]">Color</label>
@@ -138,7 +137,6 @@
                                         id$="size_[[index]]" 
                                         name$="size_[[index]]" 
                                         type="text"
-                                        required
                                         value="{{item.size::change}}" 
                                         class="mdc-text-field__input">
                                     <label class="mdc-floating-label" for$="size_[[index]]">Size</label>

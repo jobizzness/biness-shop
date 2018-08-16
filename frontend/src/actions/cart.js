@@ -7,13 +7,13 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
-import { Shop } from "../core/shop.js";
+import * as Shop from "../core/shop.js";
 
 export const SET_CART = 'SET_CART';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 
-export const addToCart = (product, useRemote) => (dispatch) => {
+export const addToCart = (product, useRemote, callback) => async (dispatch) => {
 
     //check inventory before we add it?
     if (product.stock < product.quantity) {
@@ -21,20 +21,20 @@ export const addToCart = (product, useRemote) => (dispatch) => {
     }
 
     if (useRemote) {
-        return _addToCartRemote(product, dispatch);
+
+        try {
+            await Shop.addToCart(product)
+        } catch (error) {
+            if (callback) callback(false, error)
+            return;
+        }
+        
     }
 
-    dispatch(_addToCart(product));
+    dispatch(_addToCart(product))
+    if (callback) callback(true)
 };
 
-const _addToCartRemote = async (product, dispatch) => {
-    try {
-        const done = await Shop.addToCart(product);
-        dispatch(_addToCart(product));
-    } catch (error) {
-        console.error(error);
-    }
-}
 
 const _addToCart = (product) => {
     

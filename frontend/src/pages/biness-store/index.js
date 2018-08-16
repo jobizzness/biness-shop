@@ -19,7 +19,7 @@ import template from './template.html'
 
 import { store } from '../../store.js'
 
-import { getProductListing, setActiveProduct, getProductsInCategory } from "../../actions/shop.js"
+import { getProductListing, setEditingProduct, getProductsInCategory } from "../../actions/shop.js"
 import { InjectGlobalStyle } from '../../core/utils.js'
 
 import { shop } from "../../reducers/shop.js"
@@ -107,11 +107,11 @@ class BinessStore extends connect(store)(PageViewElement) {
         if (this.active && slug) store.dispatch(getProductsInCategory(slug));
     }
 
-    _view(e) {
+    _edit(e) {
         let node = e.target;
         let data = node.data;
 
-        store.dispatch(setActiveProduct(data));
+        store.dispatch(setEditingProduct(data));
     }
 
     connectedCallback() {

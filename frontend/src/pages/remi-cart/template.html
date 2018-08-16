@@ -3,7 +3,7 @@
     <header class="pad">
         <div>
             <h1>Your Shopping Cart</h1>
-            <p>Review of <span>[[numItems]]</span> items <span>$[[total]]</span></p>
+            <p>Review of <span>[[numitems]]</span> items <span>$[[total]]</span></p>
             <div class="spacer"></div>
         </div>
     </header>
@@ -12,7 +12,7 @@
             <remi-cart-item data="[[item]]" on-delete="_delete" on-quantity-changed="_quantity-changed"></remi-cart-item>
         </template>
     </div>
-    <footer hidden$="[[!numItems]]">
+    <footer hidden$="[[!numitems]]">
         <div class="footer-inner">
             <button class="mdc-button btn-responsive" on-click="_checkout">
                 Proceed to Checkout

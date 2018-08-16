@@ -71,7 +71,7 @@ class RemiCart extends connect(store)(PageViewElement) {
 
     _stateChanged(state){
         this.total = state.shop.cart.total;
-        this.numItems = state.shop.cart.numItems;
+        this.numitems = state.shop.cart.numitems;
         this.items = state.shop.cart.items;
         this.user = state.app.user;
     }

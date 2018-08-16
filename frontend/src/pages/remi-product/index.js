@@ -129,16 +129,16 @@ class RemiProduct extends connect(store)(PageViewElement) {
 
         const data = {
             ...this.data,
-            quantity: this.quantity,
-            selectedColor: 'pink'
+            quantity: 1 //this->quantity
+            //selectedVariant: (this.selectedVariant ? this.selectedVariant : null)
         }
 
-        store.dispatch(addToCart(data, this.user != null ))
-        this.onAddedToCart();
+        store.dispatch(addToCart(data, this.user != null ), (success, error) => {
+
+        })
     }
 
     onAddedToCart(){
-        window.scrollTo(0, 0);
         this.dialog.open();
     }
 
@@ -181,25 +181,12 @@ class RemiProduct extends connect(store)(PageViewElement) {
     initSlider(){
         afterNextRender(this, () =>{
             swiper = new Swiper('.swiper-container', {
-                // Optional parameters
-                direction: 'horizontal',
                 loop: true,
-
-                // If we need pagination
-                // pagination: {
-                //     el: '.swiper-pagination',
-                // },
-
-                // Navigation arrows
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
                 },
 
-                // And if we need scrollbar
-                // scrollbar: {
-                //     el: '.swiper-scrollbar',
-                // },
             })
         })
     }

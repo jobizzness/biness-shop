@@ -67,9 +67,11 @@
             </header>
             <div class="pad products">
                 <template is="dom-repeat" items="[[bestSellers]]" as="product">
-                    <a href$="/product-edit/[[product.slug]]" on-click="_view">
-                        <remi-product-item featured forAdmin$="[[_userIsAdmin(user)]]" data="[[product]]"></remi-product-item>
-                    </a>
+                        <remi-product-item 
+                            featured 
+                            on-click="_edit"
+                            forAdmin$="[[_userIsAdmin(user)]]" 
+                            data="[[product]]"></remi-product-item>
                 </template>
             </div>
         </main>

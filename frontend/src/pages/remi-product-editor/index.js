@@ -65,7 +65,7 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
     }
 
     _checkShouldFetchData(active, _slug) {
-        if (active && (_slug && _slug != 'create')) {
+        if (active && (_slug && _slug != 'create') && !this.data._id) {
             store.dispatch(getProduct(_slug, product => store.dispatch(setEditingProduct(product))))
             return;
         }

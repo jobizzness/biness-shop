@@ -9,7 +9,7 @@ import { ADD_TO_CART, SET_CART, REMOVE_FROM_CART} from "../actions/cart.js";
 export const INITIAL_CART = {
     items: [],
     total: 0,
-    numItems: 0,
+    numitems: 0,
 };
 
 export const cart = (state = INITIAL_CART, action) => {
@@ -19,7 +19,7 @@ export const cart = (state = INITIAL_CART, action) => {
             return {
                 items: getItems(state.items, action),
                 total: getTotal(state.total, action),
-                numItems: getNumItems(state.numItems, action)
+                numitems: getNumItems(state.numitems, action)
             };
         case SET_CART:
             return action.cart;
@@ -61,7 +61,7 @@ const getTotal = (state = INITIAL_CART.total, action) => {
     }
 }
 
-const getNumItems = (state = INITIAL_CART.numItems, action) => {
+const getNumItems = (state = INITIAL_CART.numitems, action) => {
     switch (action.type) {
         case ADD_TO_CART:
             return state + (1 * action.product.quantity)
@@ -85,7 +85,7 @@ const _indexOf = (product, cart) => {
     if (cart) {
         for (let i = 0; i < cart.length; ++i) {
             let entry = cart[i];
-            if (entry.key === product.key && entry.selectedColor === product.selectedColor) {
+            if (entry._id === product._id && entry.selectedVariant === product.selectedVariant) {
                 return i;
             }
         }
