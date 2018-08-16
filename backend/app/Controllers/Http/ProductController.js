@@ -3,6 +3,7 @@
 const { validateAll } = use('Validator')
 const ApiController = use('App/Controllers/ApiController')
 const GetProductListingCommand = use('App/Commands/GetProductListingCommand')
+const UpdateProductCommand = use('App/Commands/UpdateProductCommand')
 const CreateProductCommand = use('App/Commands/CreateProductCommand')
 const ProductTransformer = use('App/Transformers/ProductTransformer')
 const Product = use('App/Models/Product')
@@ -59,7 +60,7 @@ class ProductController extends ApiController{
         // if (validation.fails()) return this.validationFails(validation)
 
         try {
-            let product = await(new CreateProductCommand(data))
+            const product = await(new CreateProductCommand(data))
             return this.respond({
                 data: this.transformer.transform(product)
             })
@@ -87,13 +88,12 @@ class ProductController extends ApiController{
         // if (validation.fails()) return this.validationFails(validation)
 
         try {
-            const product = await Product.findOrFail(data._id)
-            product.merge(this.data)
-            await product.save()
+            const product = await (new UpdateProductCommand(data))
             return this.respond({
                 data: this.transformer.transform(product)
             })
         } catch (error) {
+            console.log(error)
             return this.respondWithError(error)
         }
     }

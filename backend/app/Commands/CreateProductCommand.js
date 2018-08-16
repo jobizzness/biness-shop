@@ -13,12 +13,26 @@ class CreateProductCommand extends Command {
 
     async handle() {
 
-        const product = await Product.create(this.data)
-
+        let variants = this._formatVariants(this.data.variants)
+    
         const data = {
-            variants: []
+            ...this.data,
+            variants
         }
+
+        const product = await Product.create(data)
+
         return product
+    }
+
+    _formatVariants(variants = []){
+        let index = 0;
+        return variants.map((element) => {
+            return {
+                ...element,
+                id: index++
+            }
+        })
     }
 }
 

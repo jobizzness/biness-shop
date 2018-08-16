@@ -114,7 +114,7 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
         this.loading = true;
         store.dispatch(publishProduct(data, (success, err) => {
 
-            this.loading = fasle;
+            this.loading = false;
             if(err){
                 let detail = {
                     type: 'error',
@@ -144,10 +144,14 @@ class RemiProductEdit extends connect(store)(PageViewElement) {
         this.data.variants = this.data.variants || []
         this.push('data.variants', {})
         this.notifyPath('data.variants');
+        
+        
+    }
+
+    variantsUpdated(){
         afterNextRender(this, () => {
             this.$.variants.querySelectorAll('.mdc-text-field').forEach((node) => new MDCTextField(node));
         })
-        
     }
 
     removeVariant(e){
