@@ -1,25 +1,32 @@
-import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+import { html } from '@polymer/polymer/polymer-element.js';
 import { IronOverlayBehavior } from '@polymer/iron-overlay-behavior/iron-overlay-behavior.js';
 import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class.js';
 
 import { MDCRipple } from '@material/ripple';
 import { MDCTextField } from '@material/textfield';
+import buttonStyles from "./material/button.html";
+import { Checkbox } from "@material/mwc-checkbox";
+import { Switch } from "@material/mwc-switch";
+
 
 import '@polymer/iron-flex-layout/iron-flex-layout.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
 
 import dropin from 'braintree-web-drop-in';
 import { hideAppOverflow } from '../actions/app.js';
-import { InjectGlobalStyle } from '../core/utils.js';
+import { InjectGlobalStyle } from '../core/utils.js'
 
-//Imports lazy global styles
-InjectGlobalStyle({ name: 'remi-checkout' }, () => import('./checkout-styles.html'));
+import './checkout-styles.css';
+import { lightComponent } from './lightComponent';
+
+InjectGlobalStyle({ name: 'material-textfield' }, () => import('./material/textfield.html'));
+InjectGlobalStyle({ name: 'material-button' }, () => import('./material/button.html'));
 
 customElements.define('remi-checkout', class extends mixinBehaviors(
-    [IronOverlayBehavior], PolymerElement) {
+    [IronOverlayBehavior], lightComponent) {
     static get template() {
         return html`
+            ${html([buttonStyles])}
             <div>
                 <header class="toolbar">
                     <h1 class="title">Checkout</h1>
@@ -200,10 +207,6 @@ customElements.define('remi-checkout', class extends mixinBehaviors(
         if (e.detail instanceof MouseEvent) {
             this.restoreFocusOnClose = false;
         }
-    }
-
-    _attachDom(node) {
-        dom(this).appendChild(node);
     }
 
     _transitionEnd(e) {

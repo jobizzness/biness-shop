@@ -1,10 +1,5 @@
-<style>
-    remi-checkout {
-        display: -webkit-box;
-        display: -moz-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: box;
+
+remi-checkout {
         display: flex;
         min-height: 100vh;
         -webkit-box-orient: vertical;
@@ -33,23 +28,16 @@
         transition-property: visibility, transform;
         transition-duration: 0.2s;
         transition-delay: 0.1s;
-    }
-
-    remi-checkout.opened {
+    &.opened {
         z-index: 4;
         visibility: visible;
         -webkit-transform: translate3d(0, 0, 0);
         transform: translate3d(0, 0, 0);
     }
 
-    remi-checkout .toolbar {
+    .toolbar {
         /* border-bottom: 1px solid #b4c3ca;
                 border-top: 1px solid #b4c3ca; */
-        display: -webkit-box;
-        display: -moz-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: box;
         display: flex;
         -webkit-box-orient: horizontal;
         -moz-box-orient: horizontal;
@@ -73,35 +61,35 @@
         flex-shrink: 0;
     }
 
-    remi-checkout .title {
+    .title {
         font-size: 1.5rem;
         color: var(--app-primary-color);
     }
 
-    remi-checkout .row {
+    .row {
         margin-bottom: 2em;
     }
 
-    remi-checkout main {
+    main {
         max-width: 800px;
         margin: 1em auto;
 
         padding: 1em;
     }
 
-    remi-checkout .wrapper {
+     .wrapper {
         /* box-shadow: 5px 5px 10px 0 rgba(46,61,73,.2); */
         padding: 2em;
     }
 
-    remi-checkout h2 {
+     h2 {
         font-size: 14px;
     }
 
-    remi-checkout .actions {
+     .actions {
         margin-top: 3em;
     }
-
+}
     @media (max-width: 767px) {
         remi-checkout {
             /* top: auto;
@@ -116,4 +104,3 @@
             padding: 0;
         }
     }
-</style>

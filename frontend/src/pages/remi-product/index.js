@@ -133,9 +133,19 @@ class RemiProduct extends connect(store)(PageViewElement) {
             //selectedVariant: (this.selectedVariant ? this.selectedVariant : null)
         }
 
-        store.dispatch(addToCart(data, this.user != null ), (success, error) => {
+        store.dispatch(addToCart(data, this.user != null , (success, error) => {
+            if (error) {
+                let detail = {
+                    type: 'error',
+                    message: 'there was an error, please try again'
+                }
+                return this.dispatchEvent(new CustomEvent('alert', { bubbles: true, detail: detail }))
+            }
 
-        })
+            if (success) {
+                this.dispatchEvent(new CustomEvent('added-to-cart', { bubbles: true }))
+            }
+        }))
     }
 
     onAddedToCart(){
