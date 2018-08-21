@@ -31,6 +31,7 @@ remi-cart {
 
     button {
         border-radius: 23px !important;
+        --mdc-theme-primary: var(--app-primary-color);
     }
 }
 

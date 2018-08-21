@@ -50,8 +50,7 @@ customElements.define('biness-cart-modal', class extends mixinBehaviors(
                 margin: 1em;
             }
             .checkout{
-                --mdc-theme-primary: #ffffff;
-                background-color: #ff0057 !important;
+                --mdc-theme-primary: var(--app-secondary-color);
             }
             .close{
 
@@ -74,7 +73,7 @@ customElements.define('biness-cart-modal', class extends mixinBehaviors(
                 </div>
                 <div class="actions">
                     <a href="/cart">
-                        <button class="mdc-button checkout">
+                        <button class="mdc-button mdc-button--unelevated checkout">
                             Checkout
                         </button>
                     </a>

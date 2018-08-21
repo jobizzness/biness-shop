@@ -33,8 +33,8 @@ class CartItem extends LitElement {
         align-items: center;
       }
       .media{
-        width: 275px;
-        height: 200px;
+        width: 189px;
+        height: 243px;
       }
       iron-image{
         width: 100%;
@@ -78,7 +78,7 @@ class CartItem extends LitElement {
       }
       @media only screen and (max-device-width: 480px) and (min-device-width: 320px){
         .media{
-          width: 275px;
+          width: 78px;
           height: 100px;
         }
       }
@@ -87,8 +87,8 @@ class CartItem extends LitElement {
       <div class="media">
         <iron-image 
               style="background-color: lightgray;" 
-              sizing="cover" preload fade 
-              src="${props.data.image}">
+              sizing="contain" preload fade 
+              src$="${this._getImage(props.data)}">
           </iron-image>
       </div>
       <div class="info flex">
@@ -117,6 +117,16 @@ class CartItem extends LitElement {
 
   _delete(e){
     this.dispatchEvent(new CustomEvent('delete', {detail: this.data}))
+  }
+
+  _getImage(data) {
+    if (data.images && data.images.length > 0) {
+      return data.images[0].url
+    }
+
+    if (data.image) {
+      return data.image
+    }
   }
 
   _quantityChange(){

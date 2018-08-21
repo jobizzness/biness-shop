@@ -58,17 +58,14 @@ biness-shop {
         background-color: var(--app-header-background-color);
     }
 
-    [main-title] {
-        font-family: 'Kirang Haerang', cursive;
-        text-transform: lowercase;
-        font-size: 30px;
-        /* In the narrow layout, the toolbar is offset by the width of the
-            drawer button, and the text looks not centered. Add a padding to
-            match that button 
-        */
-        padding-right: 44px;
+    .logo {
+        padding-left: 14px;
         pointer-events: auto !important;
         color: white;
+
+        svg{
+            width: 30px;
+        }
     }
 
     #progress{
@@ -270,8 +267,6 @@ biness-shop {
     border-radius: 4px;
   }
   button.btn-responsive{
-    --mdc-theme-primary: white;
-    background: #ff0057 !important;
     min-width: 125px;
     padding: 0 35px;
     height: 43px;

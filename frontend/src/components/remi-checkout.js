@@ -131,7 +131,7 @@ customElements.define('remi-checkout', class extends mixinBehaviors(
                             <div id="dropin-container"></div>
                         </section>
                         <section class="actions layout horizontal center-center">
-                            <button class="mdc-button bn-green" hidden$="[[!showButton]]" id="submit-button">Place Order</button>
+                            <button class="mdc-button mdc-button--unelevated" hidden$="[[!showButton]]" id="submit-button">Place Order</button>
                         </section>
                     </div>
                 </main>
